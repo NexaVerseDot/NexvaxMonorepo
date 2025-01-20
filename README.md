@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://polygant.net/opencex/" target="_blank">
-    <img alt="Nexvax Logo" width="500" src="https://github.com/NexaVerseDot/NexvaxExchangeMonorepo/blob/main/deploy/logo.png">
+  <a href="https://nexvax.io/" target="_blank">
+    <img alt="Nexvax Logo" width="500" src="https://github.com/NexaVerseDot/NexvaxMonorepo/blob/main/deploy/logo.png">
   </a>
 </p>
 
