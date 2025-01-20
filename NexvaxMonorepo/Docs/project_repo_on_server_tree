@@ -1,0 +1,2192 @@
+root@nexvax:~/NexvaxExchangeMonorepo# tree -a
+.
+├── deploy
+│   ├── admin
+│   │   ├── default.conf
+│   │   ├── Dockerfile
+│   │   └── .env.template
+│   ├── backend
+│   │   └── Dockerfile
+│   ├── frontend
+│   │   ├── default.conf
+│   │   ├── Dockerfile
+│   │   └── nginx.conf
+│   ├── .gitignore
+│   ├── logo.png
+│   ├── nuxt
+│   │   ├── Dockerfile
+│   │   └── .env.template
+│   └── opencex.sh
+├── Docs
+│   ├── Baseella_API_Integration_instructions.md
+│   ├── celery_tasks.md
+│   ├── containers_list.md
+│   ├── db_tables.md
+│   ├── files_and_classes.md
+│   ├── routes.md
+│   ├── settings.md
+│   └── useful_commands.md
+├── .git
+│   ├── branches
+│   ├── config
+│   ├── description
+│   ├── HEAD
+│   ├── hooks
+│   │   ├── applypatch-msg.sample
+│   │   ├── commit-msg.sample
+│   │   ├── fsmonitor-watchman.sample
+│   │   ├── post-update.sample
+│   │   ├── pre-applypatch.sample
+│   │   ├── pre-commit.sample
+│   │   ├── pre-merge-commit.sample
+│   │   ├── prepare-commit-msg.sample
+│   │   ├── pre-push.sample
+│   │   ├── pre-rebase.sample
+│   │   ├── pre-receive.sample
+│   │   ├── push-to-checkout.sample
+│   │   └── update.sample
+│   ├── index
+│   ├── info
+│   │   └── exclude
+│   ├── logs
+│   │   ├── HEAD
+│   │   └── refs
+│   │       ├── heads
+│   │       │   └── main
+│   │       └── remotes
+│   │           └── origin
+│   │               └── HEAD
+│   ├── objects
+│   │   ├── info
+│   │   └── pack
+│   │       ├── pack-cddec130f684489facb7dad1a1f50459b39b8a40.idx
+│   │       └── pack-cddec130f684489facb7dad1a1f50459b39b8a40.pack
+│   ├── packed-refs
+│   └── refs
+│       ├── heads
+│       │   └── main
+│       ├── remotes
+│       │   └── origin
+│       │       └── HEAD
+│       └── tags
+├── LICENSE.md
+├── Nexvax-backend
+│   ├── admin_panel
+│   │   ├── apps.py
+│   │   ├── dashboard.py
+│   │   ├── filters.py
+│   │   ├── forms.py
+│   │   ├── __init__.py
+│   │   ├── menu.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── modules.py
+│   │   ├── static
+│   │   │   └── js
+│   │   │       └── menu_filter_collapse.js
+│   │   ├── templates
+│   │   │   └── admin
+│   │   │       ├── actions.html
+│   │   │       ├── base.html
+│   │   │       ├── base_site.html
+│   │   │       ├── dashboard
+│   │   │       │   └── modules
+│   │   │       │       └── menu
+│   │   │       │           ├── item.html
+│   │   │       │           └── list.html
+│   │   │       ├── form.html
+│   │   │       └── withdrawal
+│   │   │           └── request_approve_form.html
+│   │   ├── templatetags
+│   │   │   ├── __init__.py
+│   │   │   └── utils.py
+│   │   ├── urls.py
+│   │   ├── utils.py
+│   │   └── views.py
+│   ├── admin_rest
+│   │   ├── admin_rest.py
+│   │   ├── apps.py
+│   │   ├── fields.py
+│   │   ├── filters.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── mixins.py
+│   │   ├── models.py
+│   │   ├── permissions.py
+│   │   ├── restful_admin.py
+│   │   ├── serializers.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   ├── utils.py
+│   │   └── views.py
+│   ├── behave
+│   ├── bin
+│   │   └── stack.py
+│   ├── bots
+│   │   ├── admin_rest.py
+│   │   ├── apps.py
+│   │   ├── bot.py
+│   │   ├── cache.py
+│   │   ├── exceptions.py
+│   │   ├── exchanges
+│   │   │   ├── base_exchange.py
+│   │   │   ├── binance.py
+│   │   │   ├── __init__.py
+│   │   │   └── main_exchange.py
+│   │   ├── helpers.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_auto_20230126_1549.py
+│   │   │   ├── 0003_auto_20230607_1208.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── structs.py
+│   │   └── tasks.py
+│   ├── check_hash.py
+│   ├── clean.py
+│   ├── core
+│   │   ├── admin_rest.py
+│   │   ├── api_urls
+│   │   │   ├── facade.py
+│   │   │   ├── __init__.py
+│   │   │   ├── inouts.py
+│   │   │   ├── orders.py
+│   │   │   ├── stats.py
+│   │   │   ├── wallets.py
+│   │   │   └── withdrawal.py
+│   │   ├── apps.py
+│   │   ├── auth
+│   │   │   ├── adapters.py
+│   │   │   ├── backends.py
+│   │   │   ├── hmac_auth.py
+│   │   │   ├── __init__.py
+│   │   │   └── token_auth.py
+│   │   ├── balance_manager.py
+│   │   ├── cache.py
+│   │   ├── consts
+│   │   │   ├── currencies.py
+│   │   │   ├── dif_balance.py
+│   │   │   ├── facade.py
+│   │   │   ├── gates.py
+│   │   │   ├── __init__.py
+│   │   │   ├── inouts.py
+│   │   │   ├── orders.py
+│   │   │   ├── pairs.py
+│   │   │   └── settings.py
+│   │   ├── currency.py
+│   │   ├── enums
+│   │   │   ├── base.py
+│   │   │   ├── __init__.py
+│   │   │   └── profile.py
+│   │   ├── exceptions
+│   │   │   ├── facade.py
+│   │   │   ├── __init__.py
+│   │   │   ├── inouts.py
+│   │   │   ├── orders.py
+│   │   │   └── pairs.py
+│   │   ├── filters
+│   │   │   ├── __init__.py
+│   │   │   ├── orders.py
+│   │   │   └── wallet.py
+│   │   ├── __init__.py
+│   │   ├── lib
+│   │   │   ├── __init__.py
+│   │   │   └── inouts.py
+│   │   ├── management
+│   │   │   ├── commands
+│   │   │   │   ├── bot_matches_cleanup.py
+│   │   │   │   ├── disable_users_orders.py
+│   │   │   │   ├── disable_users_topups.py
+│   │   │   │   ├── disable_users_withdrawals.py
+│   │   │   │   ├── exchange_repair.py
+│   │   │   │   └── __init__.py
+│   │   │   └── __init__.py
+│   │   ├── middleware.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_profile_user_type.py
+│   │   │   ├── 0003_alter_profile_auto_logout_timeout.py
+│   │   │   ├── 0004_alter_wallettransactions_options.py
+│   │   │   ├── 0005_feesandlimits_limits_keeper_accumulation_balance.py
+│   │   │   ├── 0005_orderchangehistory_stop.py
+│   │   │   ├── 0006_merge_20230220_0834.py
+│   │   │   ├── 0007_auto_20230302_0950.py
+│   │   │   ├── 0008_regenerate_user_wallets.py
+│   │   │   ├── 0009_auto_20230315_1153.py
+│   │   │   ├── 0010_pairsettings_enable_alerts.py
+│   │   │   ├── 0011_auto_20230413_0836.py
+│   │   │   ├── 0012_auto_20230606_1047.py
+│   │   │   ├── 0013_pair_data_migrations.py
+│   │   │   ├── 0014_auto_20230607_0811.py
+│   │   │   ├── 0015_pair_unique_together.py
+│   │   │   ├── 0016_auto_20230724_0305.py
+│   │   │   ├── 0017_new_pair_params.py
+│   │   │   └── __init__.py
+│   │   ├── models
+│   │   │   ├── cryptocoins
+│   │   │   │   └── __init__.py
+│   │   │   ├── facade
+│   │   │   │   └── __init__.py
+│   │   │   ├── __init__.py
+│   │   │   ├── inouts
+│   │   │   │   ├── balance.py
+│   │   │   │   ├── dif_balance.py
+│   │   │   │   ├── disabled_coin.py
+│   │   │   │   ├── fees_and_limits.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── pair.py
+│   │   │   │   ├── pair_settings.py
+│   │   │   │   ├── sci.py
+│   │   │   │   ├── transaction.py
+│   │   │   │   ├── wallet.py
+│   │   │   │   └── withdrawal.py
+│   │   │   ├── orders
+│   │   │   │   └── __init__.py
+│   │   │   ├── settings
+│   │   │   │   └── __init__.py
+│   │   │   ├── stats
+│   │   │   │   └── __init__.py
+│   │   │   └── wallet_history
+│   │   │       └── __init__.py
+│   │   ├── orderbook
+│   │   │   ├── actions.py
+│   │   │   ├── book.py
+│   │   │   ├── helpers.py
+│   │   │   ├── __init__.py
+│   │   │   └── stack.py
+│   │   ├── otcupdater.py
+│   │   ├── pairs.py
+│   │   ├── permissions.py
+│   │   ├── serializers
+│   │   │   ├── auth.py
+│   │   │   ├── cryptocoins.py
+│   │   │   ├── facade.py
+│   │   │   ├── __init__.py
+│   │   │   ├── inouts.py
+│   │   │   ├── orders.py
+│   │   │   ├── stats.py
+│   │   │   ├── wallet_history.py
+│   │   │   └── withdrawal.py
+│   │   ├── signal_handlers
+│   │   │   ├── facade.py
+│   │   │   ├── __init__.py
+│   │   │   ├── inouts.py
+│   │   │   ├── orders.py
+│   │   │   └── wallet_history.py
+│   │   ├── signals
+│   │   │   ├── __init__.py
+│   │   │   ├── inouts.py
+│   │   │   └── orders.py
+│   │   ├── stack_processor.py
+│   │   ├── tasks
+│   │   │   ├── auth.py
+│   │   │   ├── facade.py
+│   │   │   ├── __init__.py
+│   │   │   ├── inouts.py
+│   │   │   ├── orders.py
+│   │   │   ├── settings.py
+│   │   │   └── stats.py
+│   │   ├── templates
+│   │   │   ├── 404.html
+│   │   │   ├── 503.html
+│   │   │   ├── account
+│   │   │   │   └── email
+│   │   │   │       ├── email_confirmation_message.txt
+│   │   │   │       ├── email_confirmation_signup_message.txt
+│   │   │   │       ├── email_confirmation_signup_subject.txt
+│   │   │   │       ├── email_confirmation_subject.txt
+│   │   │   │       ├── password_reset_key_message.txt
+│   │   │   │       └── password_reset_key_subject.txt
+│   │   │   ├── base_layout.html
+│   │   │   ├── email
+│   │   │   │   ├── deposit_blocked_message.en.txt
+│   │   │   │   ├── deposit_blocked_message.ru.txt
+│   │   │   │   ├── deposit_blocked_message_subject.en.txt
+│   │   │   │   ├── deposit_blocked_message_subject.ru.txt
+│   │   │   │   ├── exchange_completed_message.en.txt
+│   │   │   │   ├── exchange_completed_message.ru.txt
+│   │   │   │   ├── exchange_completed_message_subject.en.txt
+│   │   │   │   ├── exchange_completed_message_subject.ru.txt
+│   │   │   │   ├── exchange_expired_message.en.txt
+│   │   │   │   ├── exchange_expired_message.ru.txt
+│   │   │   │   ├── exchange_expired_message_subject.en.txt
+│   │   │   │   ├── exchange_expired_message_subject.ru.txt
+│   │   │   │   ├── failed_login_message.en.txt
+│   │   │   │   ├── failed_login_message.ru.txt
+│   │   │   │   ├── failed_login_subject.en.txt
+│   │   │   │   ├── failed_login_subject.ru.txt
+│   │   │   │   ├── ip_changed_message.en.txt
+│   │   │   │   ├── ip_changed_message.ru.txt
+│   │   │   │   ├── ip_changed_subject.en.txt
+│   │   │   │   └── ip_changed_subject.ru.txt
+│   │   │   ├── exchange_started_subj.en.txt
+│   │   │   ├── exchange_started_subj.ru.txt
+│   │   │   ├── exchange_started_text.en.txt
+│   │   │   ├── exchange_started_text.ru.txt
+│   │   │   ├── mailing
+│   │   │   │   └── email
+│   │   │   │       ├── message.ru.txt
+│   │   │   │       ├── message.txt
+│   │   │   │       ├── subject.ru.txt
+│   │   │   │       └── subject.txt
+│   │   │   ├── robots.txt
+│   │   │   ├── sepa_details_subj.en.txt
+│   │   │   ├── sepa_details_subj.ru.txt
+│   │   │   ├── sepa_details_text.en.txt
+│   │   │   ├── sepa_details_text.ru.txt
+│   │   │   ├── sitemap.xml
+│   │   │   ├── withdrawal_failed_subj.en.txt
+│   │   │   ├── withdrawal_failed_subj.ru.txt
+│   │   │   ├── withdrawal_failed_text.en.txt
+│   │   │   ├── withdrawal_failed_text.ru.txt
+│   │   │   └── withdrawal_request_confirmation.txt
+│   │   ├── templatetags
+│   │   │   ├── change_lang.py
+│   │   │   ├── get_domain.py
+│   │   │   ├── __init__.py
+│   │   │   ├── mathfilters.py
+│   │   │   └── spacecomma.py
+│   │   ├── tests.py
+│   │   ├── translation.py
+│   │   ├── urls.py
+│   │   ├── utils
+│   │   │   ├── auth.py
+│   │   │   ├── cleanup_utils.py
+│   │   │   ├── facade.py
+│   │   │   ├── __init__.py
+│   │   │   ├── inouts.py
+│   │   │   ├── limits.py
+│   │   │   ├── spectacular.py
+│   │   │   ├── stats
+│   │   │   │   ├── chart.py
+│   │   │   │   ├── counters.py
+│   │   │   │   ├── daily.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── lib.py
+│   │   │   │   ├── periodic_data_aggregator.py
+│   │   │   │   └── trades_aggregate.py
+│   │   │   ├── wallet_history.py
+│   │   │   └── withdrawal.py
+│   │   ├── views
+│   │   │   ├── facade.py
+│   │   │   ├── __init__.py
+│   │   │   ├── inouts.py
+│   │   │   ├── orders.py
+│   │   │   ├── stats.py
+│   │   │   ├── wallet.py
+│   │   │   └── withdrawal.py
+│   │   ├── websockets
+│   │   │   ├── consumers.py
+│   │   │   ├── __init__.py
+│   │   │   └── urls.py
+│   │   └── withdrawal_processor.py
+│   ├── cryptocoins
+│   │   ├── accumulation_manager.py
+│   │   ├── admin_rest.py
+│   │   ├── apps.py
+│   │   ├── cache.py
+│   │   ├── coins
+│   │   │   ├── bnb
+│   │   │   │   ├── bnb.py
+│   │   │   │   ├── connection.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── wallet.py
+│   │   │   ├── btc
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── service.py
+│   │   │   │   └── utils.py
+│   │   │   ├── eth
+│   │   │   │   ├── ethereum.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── wallet.py
+│   │   │   ├── __init__.py
+│   │   │   ├── matic
+│   │   │   │   ├── connection.py
+│   │   │   │   ├── consts.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── polygon.py
+│   │   │   │   ├── utils.py
+│   │   │   │   └── wallet.py
+│   │   │   ├── trx
+│   │   │   │   ├── consts.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── tron.py
+│   │   │   │   ├── utils.py
+│   │   │   │   └── wallet.py
+│   │   │   └── usdt
+│   │   │       └── __init__.py
+│   │   ├── coin_service.py
+│   │   ├── cold_wallet_stats
+│   │   │   ├── base_stats_handler.py
+│   │   │   ├── bep20_stats_handler.py
+│   │   │   ├── bnb_stats_handler.py
+│   │   │   ├── btc_stats_handler.py
+│   │   │   ├── erc20_stats_handler.py
+│   │   │   ├── eth_stats_handler.py
+│   │   │   ├── __init__.py
+│   │   │   ├── trc20_stats_handler.py
+│   │   │   └── trx_stats_handler.py
+│   │   ├── data_sources
+│   │   │   ├── crypto.py
+│   │   │   ├── __init__.py
+│   │   │   └── manager.py
+│   │   ├── default_settings.py
+│   │   ├── evm
+│   │   │   ├── base.py
+│   │   │   ├── __init__.py
+│   │   │   └── manager.py
+│   │   ├── exceptions.py
+│   │   ├── __init__.py
+│   │   ├── interfaces
+│   │   │   ├── common.py
+│   │   │   ├── datasources.py
+│   │   │   ├── __init__.py
+│   │   │   └── web3_commons.py
+│   │   ├── management
+│   │   │   ├── commands
+│   │   │   │   ├── add_token.py
+│   │   │   │   ├── btcworker.py
+│   │   │   │   ├── encrypt_users_wallet.py
+│   │   │   │   ├── generate_keeper.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── up_encrypt_users_wallet.py
+│   │   │   └── __init__.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_auto_20230117_1917.py
+│   │   │   ├── 0003_auto_20230302_0950.py
+│   │   │   ├── 0004_auto_20230607_0811.py
+│   │   │   └── __init__.py
+│   │   ├── models
+│   │   │   ├── accumulation_details.py
+│   │   │   ├── accumulation_transaction.py
+│   │   │   ├── __init__.py
+│   │   │   ├── keeper.py
+│   │   │   ├── last_processed_block.py
+│   │   │   ├── proxy.py
+│   │   │   ├── scoring.py
+│   │   │   └── stats.py
+│   │   ├── monitoring
+│   │   │   ├── base_monitor.py
+│   │   │   ├── __init__.py
+│   │   │   ├── monitoring_processor.py
+│   │   │   └── monitors
+│   │   │       ├── bep20_monitor.py
+│   │   │       ├── bnb_monitor.py
+│   │   │       ├── btc_monitor.py
+│   │   │       ├── erc20_monitor.py
+│   │   │       ├── eth_monitor.py
+│   │   │       ├── __init__.py
+│   │   │       ├── trc20_monitor.py
+│   │   │       └── trx_monitor.py
+│   │   ├── scoring
+│   │   │   ├── helpers.py
+│   │   │   ├── __init__.py
+│   │   │   ├── manager.py
+│   │   │   └── scorechain_client
+│   │   │       ├── base_client.py
+│   │   │       ├── bitcoin.py
+│   │   │       ├── bnb.py
+│   │   │       ├── ethereum.py
+│   │   │       ├── __init__.py
+│   │   │       └── tron.py
+│   │   ├── serializers.py
+│   │   ├── tasks
+│   │   │   ├── btc.py
+│   │   │   ├── commons.py
+│   │   │   ├── datasources.py
+│   │   │   ├── evm.py
+│   │   │   ├── __init__.py
+│   │   │   ├── scoring.py
+│   │   │   ├── stats.py
+│   │   │   └── trx.py
+│   │   ├── tests.py
+│   │   ├── tokens_manager.py
+│   │   ├── utils
+│   │   │   ├── base_worker.py
+│   │   │   ├── btc.py
+│   │   │   ├── commons.py
+│   │   │   ├── helpers.py
+│   │   │   ├── infura.py
+│   │   │   ├── __init__.py
+│   │   │   ├── register.py
+│   │   │   ├── service.py
+│   │   │   ├── stats.py
+│   │   │   ├── tokens.py
+│   │   │   └── wallet.py
+│   │   └── views.py
+│   ├── dashboard_rest
+│   │   ├── admin_rest.py
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── Dockerfile
+│   ├── .dockerignore
+│   ├── .env.template
+│   ├── exchange
+│   │   ├── api_urls.py
+│   │   ├── asgi.py
+│   │   ├── celery_app.py
+│   │   ├── celery.py
+│   │   ├── __init__.py
+│   │   ├── loggers.py
+│   │   ├── models.py
+│   │   ├── notifications.py
+│   │   ├── routing.py
+│   │   ├── settings
+│   │   │   ├── admin.py
+│   │   │   ├── all_auth.py
+│   │   │   ├── auth.py
+│   │   │   ├── bots.py
+│   │   │   ├── celery.py
+│   │   │   ├── common.py
+│   │   │   ├── cors.py
+│   │   │   ├── crypto.py
+│   │   │   ├── databases.py
+│   │   │   ├── email.py
+│   │   │   ├── env.py
+│   │   │   ├── exchange.py
+│   │   │   ├── i18n_l10n.py
+│   │   │   ├── __init__.py
+│   │   │   ├── kyc.py
+│   │   │   ├── logging.py
+│   │   │   ├── nodes.py
+│   │   │   ├── redis.py
+│   │   │   ├── rest_auth.py
+│   │   │   ├── rest.py
+│   │   │   ├── sci.py
+│   │   │   ├── scoring.py
+│   │   │   ├── sentry.py
+│   │   │   ├── simplejwt.py
+│   │   │   ├── spectacular.py
+│   │   │   └── twilio.py
+│   │   ├── urls.py
+│   │   ├── views.py
+│   │   └── wsgi.py
+│   ├── get_urls.py
+│   ├── .gitignore
+│   ├── lib
+│   │   ├── admin.py
+│   │   ├── backup_utils.py
+│   │   ├── batch.py
+│   │   ├── cache.py
+│   │   ├── cipher.py
+│   │   ├── countless_pagination.py
+│   │   ├── cryptointegrator
+│   │   │   └── tasks.py
+│   │   ├── exceptions.py
+│   │   ├── fields.py
+│   │   ├── filterbackend.py
+│   │   ├── helpers.py
+│   │   ├── __init__.py
+│   │   ├── json_encoder.py
+│   │   ├── mixins.py
+│   │   ├── notifications.py
+│   │   ├── oneinstlock.py
+│   │   ├── orders_helper.py
+│   │   ├── permissions.py
+│   │   ├── serializers.py
+│   │   ├── services
+│   │   │   ├── bitstamp_client.py
+│   │   │   ├── blockchain_info_client.py
+│   │   │   ├── blockcypher_client.py
+│   │   │   ├── blockstream_client.py
+│   │   │   ├── bscscan_client.py
+│   │   │   ├── btccom_client.py
+│   │   │   ├── cryptocompare_client.py
+│   │   │   ├── etherscan_client.py
+│   │   │   ├── exchange_api_client.py
+│   │   │   ├── __init__.py
+│   │   │   ├── polygonscan_client.py
+│   │   │   ├── sumsub_client.py
+│   │   │   ├── trongrid_client.py
+│   │   │   └── twilio.py
+│   │   ├── tasks.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── test_cache.py
+│   │   │   └── test_helpers.py
+│   │   ├── throttling.py
+│   │   ├── utils.py
+│   │   └── views.py
+│   ├── LICENSE.md
+│   ├── locale
+│   │   └── ru
+│   │       └── LC_MESSAGES
+│   │           └── django.po
+│   ├── manage.py
+│   ├── notifications
+│   │   ├── admin_rest.py
+│   │   ├── api_urls.py
+│   │   ├── apps.py
+│   │   ├── cache.py
+│   │   ├── commons.py
+│   │   ├── enums.py
+│   │   ├── helpers.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_auto_20230607_0811.py
+│   │   │   └── __init__.py
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   └── NotificationModels.py
+│   │   ├── serializers
+│   │   │   ├── __init__.py
+│   │   │   └── NotificationSerializers.py
+│   │   ├── signal_handlers.py
+│   │   ├── tasks.py
+│   │   ├── translation.py
+│   │   └── views
+│   │       ├── __init__.py
+│   │       └── NotificationViews.py
+│   ├── public_api
+│   │   ├── docs
+│   │   │   ├── api.md
+│   │   │   └── coingecko_api.md
+│   │   ├── fields.py
+│   │   ├── __init__.py
+│   │   ├── mixins.py
+│   │   ├── serializers
+│   │   │   ├── coingecko.py
+│   │   │   ├── common.py
+│   │   │   ├── __init__.py
+│   │   │   └── nomics.py
+│   │   ├── static
+│   │   │   └── css
+│   │   │       └── codehilite.css
+│   │   ├── templates
+│   │   │   ├── api
+│   │   │   │   └── docs.html
+│   │   │   └── drf_spectacular
+│   │   │       ├── swagger_ui.html
+│   │   │       └── swagger_ui.js
+│   │   ├── tests
+│   │   │   ├── client.py
+│   │   │   ├── __init__.py
+│   │   │   ├── test_orders.py
+│   │   │   ├── test_otc_price.py
+│   │   │   ├── test_pairs.py
+│   │   │   └── test_ticker.py
+│   │   ├── urls
+│   │   │   ├── coingecko.py
+│   │   │   ├── common.py
+│   │   │   ├── __init__.py
+│   │   │   └── nomics.py
+│   │   ├── utils.py
+│   │   └── views
+│   │       ├── coingecko.py
+│   │       ├── common.py
+│   │       ├── __init__.py
+│   │       └── nomics.py
+│   ├── pytest.ini
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── run_tests
+│   ├── sci
+│   │   └── __init__.py
+│   ├── seo
+│   │   ├── admin_rest.py
+│   │   ├── api_urls.py
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── translation.py
+│   │   ├── validators.py
+│   │   └── views.py
+│   └── wizard.py
+├── Nexvax-frontend
+│   ├── .eslintignore
+│   ├── .eslintrc.json
+│   ├── .gitignore
+│   ├── index.html
+│   ├── LICENSE.md
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── README.md
+│   ├── src
+│   │   ├── api
+│   │   │   ├── affiliatebonuses.js
+│   │   │   ├── affiliatestatus.js
+│   │   │   ├── balance.js
+│   │   │   ├── coin.js
+│   │   │   ├── countries.js
+│   │   │   ├── exchanges.js
+│   │   │   ├── KYC.js
+│   │   │   ├── notifications.js
+│   │   │   ├── order_info.js
+│   │   │   ├── order_list.js
+│   │   │   ├── orders.js
+│   │   │   ├── otcprices.js
+│   │   │   ├── pairs.js
+│   │   │   ├── payment_info.js
+│   │   │   ├── payment_list.js
+│   │   │   ├── profile.js
+│   │   │   ├── recenttrades.js
+│   │   │   ├── robot.js
+│   │   │   ├── stack.js
+│   │   │   ├── store_info.js
+│   │   │   ├── store_list.js
+│   │   │   ├── TradingView
+│   │   │   │   ├── historyProvider.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── stream.js
+│   │   │   ├── transactions.js
+│   │   │   ├── user_notifications.js
+│   │   │   └── wallethistory.js
+│   │   ├── app-config.js
+│   │   ├── App.vue
+│   │   ├── assets
+│   │   │   ├── css
+│   │   │   │   ├── main.css
+│   │   │   │   ├── modules
+│   │   │   │   │   ├── _index.scss
+│   │   │   │   │   └── _tooltip.scss
+│   │   │   │   ├── tailwind.css
+│   │   │   │   ├── theme.scss
+│   │   │   │   └── variables.scss
+│   │   │   ├── fonts
+│   │   │   │   ├── basic-sans
+│   │   │   │   │   ├── italic-300.otf
+│   │   │   │   │   ├── italic-300.woff
+│   │   │   │   │   ├── italic-300.woff2
+│   │   │   │   │   ├── italic-400.otf
+│   │   │   │   │   ├── italic-400.woff
+│   │   │   │   │   ├── italic-400.woff2
+│   │   │   │   │   ├── italic-600.otf
+│   │   │   │   │   ├── italic-600.woff
+│   │   │   │   │   ├── italic-600.woff2
+│   │   │   │   │   ├── italic-700.otf
+│   │   │   │   │   ├── italic-700.woff
+│   │   │   │   │   ├── italic-700.woff2
+│   │   │   │   │   ├── normal-300.otf
+│   │   │   │   │   ├── normal-300.woff
+│   │   │   │   │   ├── normal-300.woff2
+│   │   │   │   │   ├── normal-400.otf
+│   │   │   │   │   ├── normal-400.woff
+│   │   │   │   │   ├── normal-400.woff2
+│   │   │   │   │   ├── normal-600.otf
+│   │   │   │   │   ├── normal-600.woff
+│   │   │   │   │   ├── normal-600.woff2
+│   │   │   │   │   ├── normal-700.otf
+│   │   │   │   │   ├── normal-700.woff
+│   │   │   │   │   └── normal-700.woff2
+│   │   │   │   └── roboto
+│   │   │   │       ├── Robotoblackitalic.ttf
+│   │   │   │       ├── Robotoblackitalic.woff
+│   │   │   │       ├── Robotoblackitalic.woff2
+│   │   │   │       ├── Robotoblack.ttf
+│   │   │   │       ├── Robotoblack.woff
+│   │   │   │       ├── Robotoblack.woff2
+│   │   │   │       ├── Robotobolditalic.ttf
+│   │   │   │       ├── Robotobolditalic.woff
+│   │   │   │       ├── Robotobolditalic.woff2
+│   │   │   │       ├── Robotobold.ttf
+│   │   │   │       ├── Robotobold.woff
+│   │   │   │       ├── Robotobold.woff2
+│   │   │   │       ├── Robotoitalic.ttf
+│   │   │   │       ├── Robotoitalic.woff
+│   │   │   │       ├── Robotoitalic.woff2
+│   │   │   │       ├── Robotolightitalic.ttf
+│   │   │   │       ├── Robotolightitalic.woff
+│   │   │   │       ├── Robotolightitalic.woff2
+│   │   │   │       ├── Robotolight.ttf
+│   │   │   │       ├── Robotolight.woff
+│   │   │   │       ├── Robotolight.woff2
+│   │   │   │       ├── Robotomediumitalic.ttf
+│   │   │   │       ├── Robotomediumitalic.woff
+│   │   │   │       ├── Robotomediumitalic.woff2
+│   │   │   │       ├── Robotomedium.ttf
+│   │   │   │       ├── Robotomedium.woff
+│   │   │   │       ├── Robotomedium.woff2
+│   │   │   │       ├── Robotothinitalic.ttf
+│   │   │   │       ├── Robotothinitalic.woff
+│   │   │   │       ├── Robotothinitalic.woff2
+│   │   │   │       ├── Robotothin.ttf
+│   │   │   │       ├── Robotothin.woff
+│   │   │   │       ├── Robotothin.woff2
+│   │   │   │       ├── Roboto.ttf
+│   │   │   │       ├── Roboto.woff
+│   │   │   │       └── Roboto.woff2
+│   │   │   ├── js
+│   │   │   │   └── support.js
+│   │   │   └── TradingView
+│   │   │       └── charting_library
+│   │   │           └── charting_library.esm.js
+│   │   ├── components
+│   │   │   ├── AddressTextField.vue
+│   │   │   ├── layout
+│   │   │   │   ├── Base.vue
+│   │   │   │   ├── Footer.vue
+│   │   │   │   ├── Header.vue
+│   │   │   │   ├── Loading.vue
+│   │   │   │   ├── ModalPagesHeader.vue
+│   │   │   │   ├── parts
+│   │   │   │   │   ├── LanguageSelector.vue
+│   │   │   │   │   ├── MainLogo.vue
+│   │   │   │   │   └── Menu.vue
+│   │   │   │   └── Timeout.vue
+│   │   │   ├── main
+│   │   │   │   └── userOrders
+│   │   │   │       ├── orderRow.vue
+│   │   │   │       ├── ordersTable.vue
+│   │   │   │       └── userOrders.vue
+│   │   │   ├── modal
+│   │   │   │   ├── modal.js
+│   │   │   │   └── ModalRoot.vue
+│   │   │   ├── modals
+│   │   │   │   ├── ConfirmMessage.vue
+│   │   │   │   ├── InfoModal.vue
+│   │   │   │   ├── RobotDepositModal.vue
+│   │   │   │   ├── RobotWithdrawModal.vue
+│   │   │   │   └── UpdateOrderModal.vue
+│   │   │   ├── notifications
+│   │   │   │   ├── index.js
+│   │   │   │   └── NotificationRoot.vue
+│   │   │   ├── PhoneVerify.vue
+│   │   │   ├── profileSettings
+│   │   │   │   └── KycFrame.vue
+│   │   │   ├── shared
+│   │   │   │   ├── BaseButton.vue
+│   │   │   │   ├── BaseCopyInput.vue
+│   │   │   │   ├── BaseModal.vue
+│   │   │   │   ├── BaseSelect.vue
+│   │   │   │   ├── BaseTable.vue
+│   │   │   │   ├── BaseTextField.vue
+│   │   │   │   └── p2p
+│   │   │   │       ├── BaseCheckbox.vue
+│   │   │   │       ├── BaseCounter.vue
+│   │   │   │       ├── BaseRadios.vue
+│   │   │   │       ├── BaseSelect.vue
+│   │   │   │       ├── BaseSteps.vue
+│   │   │   │       ├── BaseSwitch.vue
+│   │   │   │       ├── BaseTabs.vue
+│   │   │   │       ├── BaseTextarea.vue
+│   │   │   │       ├── BaseTextField.vue
+│   │   │   │       ├── BaseTimer.vue
+│   │   │   │       └── BaseVerticalSteps.vue
+│   │   │   └── ui
+│   │   │       ├── BaseList.vue
+│   │   │       ├── Button.vue
+│   │   │       ├── CountrySelect.vue
+│   │   │       ├── form
+│   │   │       │   ├── Checkbox.vue
+│   │   │       │   ├── mixins
+│   │   │       │   │   └── baseFormMixin.js
+│   │   │       │   ├── setup
+│   │   │       │   │   ├── emittedUseField.js
+│   │   │       │   │   └── useFocusClass.js
+│   │   │       │   ├── TextArea.vue
+│   │   │       │   ├── TextField.vue
+│   │   │       │   └── VSelect.vue
+│   │   │       ├── Select2.vue
+│   │   │       ├── Select3.vue
+│   │   │       ├── SelectAdvanced.vue
+│   │   │       ├── TabBlock.vue
+│   │   │       ├── Tabs.vue
+│   │   │       ├── VCard.vue
+│   │   │       └── VIcon.vue
+│   │   ├── directives
+│   │   │   ├── numeric.js
+│   │   │   ├── pattern.js
+│   │   │   ├── restrictNumberInput.js
+│   │   │   └── tooltip.js
+│   │   ├── env.d.ts
+│   │   ├── example.local_config.js
+│   │   ├── .gitignore
+│   │   ├── helpers
+│   │   │   ├── errorHundle.js
+│   │   │   ├── globalWSSubscriptions.js
+│   │   │   └── widget.js
+│   │   ├── locales
+│   │   │   ├── dictionary.js
+│   │   │   ├── index.js
+│   │   │   └── lang
+│   │   │       ├── common.js
+│   │   │       └── pages.js
+│   │   ├── main.ts
+│   │   ├── mixins
+│   │   │   ├── copyToBuffer.js
+│   │   │   ├── delay.js
+│   │   │   ├── getCoolBalanceFIAT.js
+│   │   │   ├── getCoolBalance.js
+│   │   │   ├── getCoolTrade.js
+│   │   │   ├── getDecimalWLength.js
+│   │   │   ├── getFixedDecimal.js
+│   │   │   ├── getFormattedDate.js
+│   │   │   ├── getPair.js
+│   │   │   ├── getPairs24h.js
+│   │   │   ├── getRegularNumber.js
+│   │   │   ├── getWizardComputedAmount.js
+│   │   │   ├── handleLogout.js
+│   │   │   ├── helpers.js
+│   │   │   ├── isFiat.js
+│   │   │   ├── login.js
+│   │   │   ├── mainPageDataInitMocks.js
+│   │   │   ├── menuHelper.js
+│   │   │   ├── themes.js
+│   │   │   └── wallet.js
+│   │   ├── modules
+│   │   │   ├── about
+│   │   │   │   ├── locales
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── pages
+│   │   │   │   │   └── Support.vue
+│   │   │   │   └── router.js
+│   │   │   ├── account
+│   │   │   │   ├── components
+│   │   │   │   │   ├── mixin.js
+│   │   │   │   │   ├── PasswordChangeSection.vue
+│   │   │   │   │   ├── PasswordStrength.vue
+│   │   │   │   │   ├── PersonalInfoSettings.vue
+│   │   │   │   │   └── SettingSection.vue
+│   │   │   │   ├── pages
+│   │   │   │   │   ├── ConfirmRegister.vue
+│   │   │   │   │   ├── ConfirmWithdrawalUrl.vue
+│   │   │   │   │   ├── EmailVerify.vue
+│   │   │   │   │   ├── Forgot.vue
+│   │   │   │   │   ├── InterfaceSelect.vue
+│   │   │   │   │   ├── Login.vue
+│   │   │   │   │   ├── ProfileSettings.vue
+│   │   │   │   │   ├── Register.vue
+│   │   │   │   │   ├── UserResendConfirmEmail.vue
+│   │   │   │   │   └── UserResetUrl.vue
+│   │   │   │   └── router.js
+│   │   │   ├── exchange
+│   │   │   │   ├── components
+│   │   │   │   │   ├── FastBuySellHistoryList.vue
+│   │   │   │   │   └── FastBuySellWalletList.vue
+│   │   │   │   ├── locales
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── pages
+│   │   │   │   │   └── FastBuySell.vue
+│   │   │   │   └── router.js
+│   │   │   ├── fees
+│   │   │   │   ├── locales
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── pages
+│   │   │   │   │   └── Fees.vue
+│   │   │   │   └── router.js
+│   │   │   ├── trade
+│   │   │   │   ├── components
+│   │   │   │   │   ├── CurrencyList.vue
+│   │   │   │   │   ├── LimitsList.vue
+│   │   │   │   │   ├── orders
+│   │   │   │   │   │   ├── Orders-header.vue
+│   │   │   │   │   │   ├── Orders-sell-buy.vue
+│   │   │   │   │   │   ├── Orders-table-row.vue
+│   │   │   │   │   │   ├── Orders-table.vue
+│   │   │   │   │   │   └── Orders.vue
+│   │   │   │   │   ├── OTC.vue
+│   │   │   │   │   ├── Overbook.vue
+│   │   │   │   │   ├── Recent.vue
+│   │   │   │   │   ├── StopLimit.vue
+│   │   │   │   │   ├── TradeGraphic.vue
+│   │   │   │   │   ├── TradeInput.vue
+│   │   │   │   │   └── TradeMenus.vue
+│   │   │   │   ├── pages
+│   │   │   │   │   └── Trade.vue
+│   │   │   │   └── router.js
+│   │   │   └── wallet
+│   │   │       ├── components
+│   │   │       │   ├── modals
+│   │   │       │   │   ├── DepositNoticeModal.vue
+│   │   │       │   │   ├── InfoModal.vue
+│   │   │       │   │   ├── SecurityNoticeModal.vue
+│   │   │       │   │   ├── SepaDetails.vue
+│   │   │       │   │   ├── WalletActivateCancelCodeModals.vue
+│   │   │       │   │   ├── WalletDepositAddress.vue
+│   │   │       │   │   ├── WalletDepositAdvCashModal.vue
+│   │   │       │   │   ├── WalletDepositFiatModal.vue
+│   │   │       │   │   ├── WalletDepositFiatP2PCode.vue
+│   │   │       │   │   ├── WalletDepositPayeerModal.vue
+│   │   │       │   │   ├── WalletDepositSepaFialModal.vue
+│   │   │       │   │   ├── WalletWithdrawAdvCashModal.vue
+│   │   │       │   │   ├── WalletWithdrawalCryptoAddress.vue
+│   │   │       │   │   ├── WalletWithdrawFiatModal.vue
+│   │   │       │   │   ├── WalletWithdrawP2PModal.vue
+│   │   │       │   │   └── WalletWithdrawPayeerModal.vue
+│   │   │       │   ├── WalletHistory.vue
+│   │   │       │   ├── WalletListEdit.vue
+│   │   │       │   └── WalletList.vue
+│   │   │       ├── locales
+│   │   │       │   └── index.js
+│   │   │       ├── pages
+│   │   │       │   ├── Deposit.vue
+│   │   │       │   ├── History.vue
+│   │   │       │   ├── Index.vue
+│   │   │       │   └── Withdrawal.vue
+│   │   │       └── router.js
+│   │   ├── pages
+│   │   │   ├── 404.vue
+│   │   │   └── KYC.vue
+│   │   ├── plugins
+│   │   │   ├── global-components.js
+│   │   │   ├── http.js
+│   │   │   └── index.js
+│   │   ├── router
+│   │   │   └── index.js
+│   │   ├── static
+│   │   │   └── public
+│   │   │       ├── android-chrome-192x192.png
+│   │   │       ├── android-chrome-512x512.png
+│   │   │       ├── browserconfig.xml
+│   │   │       ├── dump.html
+│   │   │       ├── favicon
+│   │   │       │   ├── android-icon-144x144.png
+│   │   │       │   ├── android-icon-192x192.png
+│   │   │       │   ├── android-icon-36x36.png
+│   │   │       │   ├── android-icon-48x48.png
+│   │   │       │   ├── android-icon-72x72.png
+│   │   │       │   ├── android-icon-96x96.png
+│   │   │       │   ├── apple-icon-114x114.png
+│   │   │       │   ├── apple-icon-120x120.png
+│   │   │       │   ├── apple-icon-144x144.png
+│   │   │       │   ├── apple-icon-152x152.png
+│   │   │       │   ├── apple-icon-180x180.png
+│   │   │       │   ├── apple-icon-57x57.png
+│   │   │       │   ├── apple-icon-60x60.png
+│   │   │       │   ├── apple-icon-72x72.png
+│   │   │       │   ├── apple-icon-76x76.png
+│   │   │       │   ├── apple-icon.png
+│   │   │       │   ├── apple-icon-precomposed.png
+│   │   │       │   ├── browserconfig.xml
+│   │   │       │   ├── favicon-16x16.png
+│   │   │       │   ├── favicon-32x32.png
+│   │   │       │   ├── favicon-96x96.png
+│   │   │       │   ├── favicon.ico
+│   │   │       │   ├── manifest.json
+│   │   │       │   ├── ms-icon-144x144.png
+│   │   │       │   ├── ms-icon-150x150.png
+│   │   │       │   ├── ms-icon-310x310.png
+│   │   │       │   └── ms-icon-70x70.png
+│   │   │       ├── favicon.ico
+│   │   │       ├── img
+│   │   │       │   ├── android-img.png
+│   │   │       │   ├── angle-down.svg
+│   │   │       │   ├── angle-up.svg
+│   │   │       │   ├── apple.svg
+│   │   │       │   ├── arrow-top-blue.png
+│   │   │       │   ├── arrow-top-blue-sel.png
+│   │   │       │   ├── arrow-top_b.png
+│   │   │       │   ├── arrow-top.png
+│   │   │       │   ├── author.png
+│   │   │       │   ├── author.svg
+│   │   │       │   ├── balans_b.png
+│   │   │       │   ├── balans.png
+│   │   │       │   ├── bg-profits.png
+│   │   │       │   ├── bit.jpg
+│   │   │       │   ├── btc-icon.png
+│   │   │       │   ├── burger.png
+│   │   │       │   ├── caret-white.svg
+│   │   │       │   ├── check-circle.svg
+│   │   │       │   ├── checked.png
+│   │   │       │   ├── coin
+│   │   │       │   │   ├── and.svg
+│   │   │       │   │   ├── bcash.png
+│   │   │       │   │   ├── bcash.svg
+│   │   │       │   │   ├── bcc.svg
+│   │   │       │   │   ├── bch.png
+│   │   │       │   │   ├── bch.svg
+│   │   │       │   │   ├── binance.png
+│   │   │       │   │   ├── bitcoin.png
+│   │   │       │   │   ├── bnb.svg
+│   │   │       │   │   ├── btc.png
+│   │   │       │   │   ├── btc.svg
+│   │   │       │   │   ├── cashberrycoin.png
+│   │   │       │   │   ├── cbc.png
+│   │   │       │   │   ├── cbc.svg
+│   │   │       │   │   ├── dash.svg
+│   │   │       │   │   ├── defi.svg
+│   │   │       │   │   ├── dollar.png
+│   │   │       │   │   ├── eos.svg
+│   │   │       │   │   ├── ethereumCircle.png
+│   │   │       │   │   ├── ethereum.png
+│   │   │       │   │   ├── eth.png
+│   │   │       │   │   ├── eth.svg
+│   │   │       │   │   ├── euro.png
+│   │   │       │   │   ├── eur.png
+│   │   │       │   │   ├── eur.svg
+│   │   │       │   │   ├── iota.png
+│   │   │       │   │   ├── lfc.svg
+│   │   │       │   │   ├── litecoin.svg
+│   │   │       │   │   ├── lrg.svg
+│   │   │       │   │   ├── ltc.png
+│   │   │       │   │   ├── ltc.svg
+│   │   │       │   │   ├── matic.svg
+│   │   │       │   │   ├── mmeta.svg
+│   │   │       │   │   ├── namecoin.png
+│   │   │       │   │   ├── navcoin.png
+│   │   │       │   │   ├── plx.svg
+│   │   │       │   │   ├── rep.png
+│   │   │       │   │   ├── rep.svg
+│   │   │       │   │   ├── rouble.png
+│   │   │       │   │   ├── r.png
+│   │   │       │   │   ├── rub.png
+│   │   │       │   │   ├── rub.svg
+│   │   │       │   │   ├── spiner.png
+│   │   │       │   │   ├── t.png
+│   │   │       │   │   ├── trx.svg
+│   │   │       │   │   ├── try.png
+│   │   │       │   │   ├── try.svg
+│   │   │       │   │   ├── usdc.svg
+│   │   │       │   │   ├── usd.png
+│   │   │       │   │   ├── usd.svg
+│   │   │       │   │   ├── usdt.png
+│   │   │       │   │   ├── usdt.svg
+│   │   │       │   │   ├── wear.svg
+│   │   │       │   │   ├── xrp.png
+│   │   │       │   │   └── xrp.svg
+│   │   │       │   ├── common
+│   │   │       │   │   ├── arrow-down.svg
+│   │   │       │   │   ├── arrow.svg
+│   │   │       │   │   ├── arrow-up.svg
+│   │   │       │   │   ├── calendar.svg
+│   │   │       │   │   ├── close.svg
+│   │   │       │   │   ├── flags
+│   │   │       │   │   │   ├── ae.gif
+│   │   │       │   │   │   ├── af.gif
+│   │   │       │   │   │   ├── ag.gif
+│   │   │       │   │   │   ├── ai.gif
+│   │   │       │   │   │   ├── al.gif
+│   │   │       │   │   │   ├── am.gif
+│   │   │       │   │   │   ├── andora.gif
+│   │   │       │   │   │   ├── ao.gif
+│   │   │       │   │   │   ├── aq.gif
+│   │   │       │   │   │   ├── ar.gif
+│   │   │       │   │   │   ├── as.gif
+│   │   │       │   │   │   ├── at.gif
+│   │   │       │   │   │   ├── au.gif
+│   │   │       │   │   │   ├── aw.gif
+│   │   │       │   │   │   ├── ax.gif
+│   │   │       │   │   │   ├── az.gif
+│   │   │       │   │   │   ├── ba.gif
+│   │   │       │   │   │   ├── bb.gif
+│   │   │       │   │   │   ├── bd.gif
+│   │   │       │   │   │   ├── be.gif
+│   │   │       │   │   │   ├── bf.gif
+│   │   │       │   │   │   ├── bg.gif
+│   │   │       │   │   │   ├── bh.gif
+│   │   │       │   │   │   ├── bi.gif
+│   │   │       │   │   │   ├── bj.gif
+│   │   │       │   │   │   ├── bl.gif
+│   │   │       │   │   │   ├── bm.gif
+│   │   │       │   │   │   ├── bn.gif
+│   │   │       │   │   │   ├── bo.gif
+│   │   │       │   │   │   ├── bq.gif
+│   │   │       │   │   │   ├── br.gif
+│   │   │       │   │   │   ├── bs.gif
+│   │   │       │   │   │   ├── bt.gif
+│   │   │       │   │   │   ├── bv.gif
+│   │   │       │   │   │   ├── bw.gif
+│   │   │       │   │   │   ├── by.gif
+│   │   │       │   │   │   ├── bz.gif
+│   │   │       │   │   │   ├── ca.gif
+│   │   │       │   │   │   ├── cc.gif
+│   │   │       │   │   │   ├── cd.gif
+│   │   │       │   │   │   ├── cf.gif
+│   │   │       │   │   │   ├── cg.gif
+│   │   │       │   │   │   ├── ch.gif
+│   │   │       │   │   │   ├── ci.gif
+│   │   │       │   │   │   ├── ck.gif
+│   │   │       │   │   │   ├── cl.gif
+│   │   │       │   │   │   ├── cm.gif
+│   │   │       │   │   │   ├── cn.gif
+│   │   │       │   │   │   ├── co.gif
+│   │   │       │   │   │   ├── cr.gif
+│   │   │       │   │   │   ├── cu.gif
+│   │   │       │   │   │   ├── cv.gif
+│   │   │       │   │   │   ├── cw.gif
+│   │   │       │   │   │   ├── cx.gif
+│   │   │       │   │   │   ├── cy.gif
+│   │   │       │   │   │   ├── cz.gif
+│   │   │       │   │   │   ├── de.gif
+│   │   │       │   │   │   ├── dj.gif
+│   │   │       │   │   │   ├── dk.gif
+│   │   │       │   │   │   ├── dm.gif
+│   │   │       │   │   │   ├── do.gif
+│   │   │       │   │   │   ├── dz.gif
+│   │   │       │   │   │   ├── ec.gif
+│   │   │       │   │   │   ├── ee.gif
+│   │   │       │   │   │   ├── eg.gif
+│   │   │       │   │   │   ├── eh.gif
+│   │   │       │   │   │   ├── er.gif
+│   │   │       │   │   │   ├── es.gif
+│   │   │       │   │   │   ├── et.gif
+│   │   │       │   │   │   ├── eu.gif
+│   │   │       │   │   │   ├── fi.gif
+│   │   │       │   │   │   ├── fj.gif
+│   │   │       │   │   │   ├── fk.gif
+│   │   │       │   │   │   ├── fm.gif
+│   │   │       │   │   │   ├── fo.gif
+│   │   │       │   │   │   ├── fr.gif
+│   │   │       │   │   │   ├── ga.gif
+│   │   │       │   │   │   ├── gb.gif
+│   │   │       │   │   │   ├── gd.gif
+│   │   │       │   │   │   ├── ge.gif
+│   │   │       │   │   │   ├── gf.gif
+│   │   │       │   │   │   ├── gg.gif
+│   │   │       │   │   │   ├── gh.gif
+│   │   │       │   │   │   ├── __.gif
+│   │   │       │   │   │   ├── gi.gif
+│   │   │       │   │   │   ├── gl.gif
+│   │   │       │   │   │   ├── gm.gif
+│   │   │       │   │   │   ├── gn.gif
+│   │   │       │   │   │   ├── gp.gif
+│   │   │       │   │   │   ├── gq.gif
+│   │   │       │   │   │   ├── gr.gif
+│   │   │       │   │   │   ├── gs.gif
+│   │   │       │   │   │   ├── gt.gif
+│   │   │       │   │   │   ├── gu.gif
+│   │   │       │   │   │   ├── gw.gif
+│   │   │       │   │   │   ├── gy.gif
+│   │   │       │   │   │   ├── hk.gif
+│   │   │       │   │   │   ├── hm.gif
+│   │   │       │   │   │   ├── hn.gif
+│   │   │       │   │   │   ├── hr.gif
+│   │   │       │   │   │   ├── ht.gif
+│   │   │       │   │   │   ├── hu.gif
+│   │   │       │   │   │   ├── id.gif
+│   │   │       │   │   │   ├── ie.gif
+│   │   │       │   │   │   ├── il.gif
+│   │   │       │   │   │   ├── im.gif
+│   │   │       │   │   │   ├── in.gif
+│   │   │       │   │   │   ├── io.gif
+│   │   │       │   │   │   ├── iq.gif
+│   │   │       │   │   │   ├── ir.gif
+│   │   │       │   │   │   ├── is.gif
+│   │   │       │   │   │   ├── it.gif
+│   │   │       │   │   │   ├── je.gif
+│   │   │       │   │   │   ├── jm.gif
+│   │   │       │   │   │   ├── jo.gif
+│   │   │       │   │   │   ├── jp.gif
+│   │   │       │   │   │   ├── ke.gif
+│   │   │       │   │   │   ├── kg.gif
+│   │   │       │   │   │   ├── kh.gif
+│   │   │       │   │   │   ├── ki.gif
+│   │   │       │   │   │   ├── km.gif
+│   │   │       │   │   │   ├── kn.gif
+│   │   │       │   │   │   ├── kp.gif
+│   │   │       │   │   │   ├── kr.gif
+│   │   │       │   │   │   ├── kw.gif
+│   │   │       │   │   │   ├── ky.gif
+│   │   │       │   │   │   ├── kz.gif
+│   │   │       │   │   │   ├── la.gif
+│   │   │       │   │   │   ├── lb.gif
+│   │   │       │   │   │   ├── lc.gif
+│   │   │       │   │   │   ├── li.gif
+│   │   │       │   │   │   ├── lk.gif
+│   │   │       │   │   │   ├── lr.gif
+│   │   │       │   │   │   ├── ls.gif
+│   │   │       │   │   │   ├── lt.gif
+│   │   │       │   │   │   ├── lu.gif
+│   │   │       │   │   │   ├── lv.gif
+│   │   │       │   │   │   ├── ly.gif
+│   │   │       │   │   │   ├── ma.gif
+│   │   │       │   │   │   ├── mc.gif
+│   │   │       │   │   │   ├── md.gif
+│   │   │       │   │   │   ├── me.gif
+│   │   │       │   │   │   ├── mf.gif
+│   │   │       │   │   │   ├── mg.gif
+│   │   │       │   │   │   ├── mh.gif
+│   │   │       │   │   │   ├── mk.gif
+│   │   │       │   │   │   ├── ml.gif
+│   │   │       │   │   │   ├── mm.gif
+│   │   │       │   │   │   ├── mn.gif
+│   │   │       │   │   │   ├── mo.gif
+│   │   │       │   │   │   ├── mp.gif
+│   │   │       │   │   │   ├── mq.gif
+│   │   │       │   │   │   ├── mr.gif
+│   │   │       │   │   │   ├── ms.gif
+│   │   │       │   │   │   ├── mt.gif
+│   │   │       │   │   │   ├── mu.gif
+│   │   │       │   │   │   ├── mv.gif
+│   │   │       │   │   │   ├── mw.gif
+│   │   │       │   │   │   ├── mx.gif
+│   │   │       │   │   │   ├── my.gif
+│   │   │       │   │   │   ├── mz.gif
+│   │   │       │   │   │   ├── na.gif
+│   │   │       │   │   │   ├── nc.gif
+│   │   │       │   │   │   ├── ne.gif
+│   │   │       │   │   │   ├── nf.gif
+│   │   │       │   │   │   ├── ng.gif
+│   │   │       │   │   │   ├── ni.gif
+│   │   │       │   │   │   ├── nl.gif
+│   │   │       │   │   │   ├── no.gif
+│   │   │       │   │   │   ├── np.gif
+│   │   │       │   │   │   ├── nr.gif
+│   │   │       │   │   │   ├── nu.gif
+│   │   │       │   │   │   ├── nz.gif
+│   │   │       │   │   │   ├── om.gif
+│   │   │       │   │   │   ├── pa.gif
+│   │   │       │   │   │   ├── pe.gif
+│   │   │       │   │   │   ├── pf.gif
+│   │   │       │   │   │   ├── pg.gif
+│   │   │       │   │   │   ├── ph.gif
+│   │   │       │   │   │   ├── pk.gif
+│   │   │       │   │   │   ├── pl.gif
+│   │   │       │   │   │   ├── pm.gif
+│   │   │       │   │   │   ├── pn.gif
+│   │   │       │   │   │   ├── pr.gif
+│   │   │       │   │   │   ├── ps.gif
+│   │   │       │   │   │   ├── pt.gif
+│   │   │       │   │   │   ├── pw.gif
+│   │   │       │   │   │   ├── py.gif
+│   │   │       │   │   │   ├── qa.gif
+│   │   │       │   │   │   ├── re.gif
+│   │   │       │   │   │   ├── ro.gif
+│   │   │       │   │   │   ├── rs.gif
+│   │   │       │   │   │   ├── ru.gif
+│   │   │       │   │   │   ├── rw.gif
+│   │   │       │   │   │   ├── sa.gif
+│   │   │       │   │   │   ├── sb.gif
+│   │   │       │   │   │   ├── sc.gif
+│   │   │       │   │   │   ├── sd.gif
+│   │   │       │   │   │   ├── se.gif
+│   │   │       │   │   │   ├── sg.gif
+│   │   │       │   │   │   ├── sh.gif
+│   │   │       │   │   │   ├── si.gif
+│   │   │       │   │   │   ├── sj.gif
+│   │   │       │   │   │   ├── sk.gif
+│   │   │       │   │   │   ├── sl.gif
+│   │   │       │   │   │   ├── sm.gif
+│   │   │       │   │   │   ├── sn.gif
+│   │   │       │   │   │   ├── so.gif
+│   │   │       │   │   │   ├── sprite.css
+│   │   │       │   │   │   ├── sprite-hq.css
+│   │   │       │   │   │   ├── sprite-hq.png
+│   │   │       │   │   │   ├── sprite.png
+│   │   │       │   │   │   ├── sr.gif
+│   │   │       │   │   │   ├── ss.gif
+│   │   │       │   │   │   ├── st.gif
+│   │   │       │   │   │   ├── sv.gif
+│   │   │       │   │   │   ├── sx.gif
+│   │   │       │   │   │   ├── sy.gif
+│   │   │       │   │   │   ├── sz.gif
+│   │   │       │   │   │   ├── tc.gif
+│   │   │       │   │   │   ├── td.gif
+│   │   │       │   │   │   ├── tf.gif
+│   │   │       │   │   │   ├── tg.gif
+│   │   │       │   │   │   ├── th.gif
+│   │   │       │   │   │   ├── tj.gif
+│   │   │       │   │   │   ├── tk.gif
+│   │   │       │   │   │   ├── tl.gif
+│   │   │       │   │   │   ├── tm.gif
+│   │   │       │   │   │   ├── tn.gif
+│   │   │       │   │   │   ├── to.gif
+│   │   │       │   │   │   ├── tr.gif
+│   │   │       │   │   │   ├── tt.gif
+│   │   │       │   │   │   ├── tv.gif
+│   │   │       │   │   │   ├── tw.gif
+│   │   │       │   │   │   ├── tz.gif
+│   │   │       │   │   │   ├── ua.gif
+│   │   │       │   │   │   ├── ug.gif
+│   │   │       │   │   │   ├── um.gif
+│   │   │       │   │   │   ├── us.gif
+│   │   │       │   │   │   ├── uy.gif
+│   │   │       │   │   │   ├── uz.gif
+│   │   │       │   │   │   ├── va.gif
+│   │   │       │   │   │   ├── vc.gif
+│   │   │       │   │   │   ├── ve.gif
+│   │   │       │   │   │   ├── vg.gif
+│   │   │       │   │   │   ├── vi.gif
+│   │   │       │   │   │   ├── vn.gif
+│   │   │       │   │   │   ├── vu.gif
+│   │   │       │   │   │   ├── wf.gif
+│   │   │       │   │   │   ├── ws.gif
+│   │   │       │   │   │   ├── ye.gif
+│   │   │       │   │   │   ├── yt.gif
+│   │   │       │   │   │   ├── za.gif
+│   │   │       │   │   │   ├── zm.gif
+│   │   │       │   │   │   └── zw.gif
+│   │   │       │   │   ├── info-octagon.svg
+│   │   │       │   │   ├── pdf-icon.png
+│   │   │       │   │   ├── svgcrypto
+│   │   │       │   │   │   ├── and.svg
+│   │   │       │   │   │   ├── bcc.svg
+│   │   │       │   │   │   ├── bch.svg
+│   │   │       │   │   │   ├── bnb.svg
+│   │   │       │   │   │   ├── btc.svg
+│   │   │       │   │   │   ├── cbc.svg
+│   │   │       │   │   │   ├── dash.svg
+│   │   │       │   │   │   ├── defi.svg
+│   │   │       │   │   │   ├── eos.svg
+│   │   │       │   │   │   ├── eth.svg
+│   │   │       │   │   │   ├── eur.svg
+│   │   │       │   │   │   ├── lfc.svg
+│   │   │       │   │   │   ├── lrg.svg
+│   │   │       │   │   │   ├── ltc.svg
+│   │   │       │   │   │   ├── matic.svg
+│   │   │       │   │   │   ├── mmeta.svg
+│   │   │       │   │   │   ├── plx.svg
+│   │   │       │   │   │   ├── rep.svg
+│   │   │       │   │   │   ├── rub.svg
+│   │   │       │   │   │   ├── trx.svg
+│   │   │       │   │   │   ├── usdc.svg
+│   │   │       │   │   │   ├── usd.svg
+│   │   │       │   │   │   ├── usdt.svg
+│   │   │       │   │   │   ├── wear.svg
+│   │   │       │   │   │   └── xrp.svg
+│   │   │       │   │   └── updata.png
+│   │   │       │   ├── copy.svg
+│   │   │       │   ├── down.png
+│   │   │       │   ├── en.png
+│   │   │       │   ├── envelope.svg
+│   │   │       │   ├── es.png
+│   │   │       │   ├── exchange-preview.png
+│   │   │       │   ├── eye-slash.svg
+│   │   │       │   ├── eye.svg
+│   │   │       │   ├── facebook.png
+│   │   │       │   ├── facebook.svg
+│   │   │       │   ├── faq
+│   │   │       │   │   ├── bars.svg
+│   │   │       │   │   ├── bolt.svg
+│   │   │       │   │   ├── cog.svg
+│   │   │       │   │   ├── credit_card.svg
+│   │   │       │   │   ├── exchange.svg
+│   │   │       │   │   ├── gift.svg
+│   │   │       │   │   ├── line_chart.svg
+│   │   │       │   │   ├── list_ul.svg
+│   │   │       │   │   ├── money.svg
+│   │   │       │   │   ├── rocket.svg
+│   │   │       │   │   ├── shield.svg
+│   │   │       │   │   └── users.svg
+│   │   │       │   ├── footer-android.png
+│   │   │       │   ├── footer-ios.png
+│   │   │       │   ├── fr.png
+│   │   │       │   ├── google.svg
+│   │   │       │   ├── history.svg
+│   │   │       │   ├── info-main-page
+│   │   │       │   │   ├── facebook.png
+│   │   │       │   │   ├── girl.png
+│   │   │       │   │   ├── human
+│   │   │       │   │   │   ├── 0.svg
+│   │   │       │   │   │   ├── 1.svg
+│   │   │       │   │   │   └── 2.svg
+│   │   │       │   │   ├── instant-exchange-mock.png
+│   │   │       │   │   ├── interface-img.png
+│   │   │       │   │   ├── man.png
+│   │   │       │   │   ├── payments-img.png
+│   │   │       │   │   ├── pay-options.png
+│   │   │       │   │   ├── portfolio-background.png
+│   │   │       │   │   ├── rocket.png
+│   │   │       │   │   ├── support-24-7.png
+│   │   │       │   │   ├── telegram.png
+│   │   │       │   │   ├── top-background.png
+│   │   │       │   │   ├── twitter.png
+│   │   │       │   │   ├── wallet.png
+│   │   │       │   │   └── your-portfolio-mock.png
+│   │   │       │   ├── ios-img.png
+│   │   │       │   ├── lang
+│   │   │       │   │   ├── en_circle.png
+│   │   │       │   │   ├── eng_circle.png
+│   │   │       │   │   ├── eng.png
+│   │   │       │   │   ├── en.png
+│   │   │       │   │   ├── en_square.png
+│   │   │       │   │   ├── es_circle.png
+│   │   │       │   │   ├── fr_circle.png
+│   │   │       │   │   ├── ru_circle.png
+│   │   │       │   │   ├── ru.png
+│   │   │       │   │   ├── ru_square.png
+│   │   │       │   │   ├── tr_circle.png
+│   │   │       │   │   └── tr.png
+│   │   │       │   ├── laptop.png
+│   │   │       │   ├── launchpad
+│   │   │       │   │   └── icons
+│   │   │       │   │       ├── application.svg
+│   │   │       │   │       ├── arror-left.svg
+│   │   │       │   │       ├── arrow_circle_up.svg
+│   │   │       │   │       ├── arrow-rigth.svg
+│   │   │       │   │       ├── back-icon.svg
+│   │   │       │   │       ├── bx-wallet.svg
+│   │   │       │   │       ├── check.svg
+│   │   │       │   │       ├── circulation.svg
+│   │   │       │   │       ├── confirmed.svg
+│   │   │       │   │       ├── currency.svg
+│   │   │       │   │       ├── drag.svg
+│   │   │       │   │       ├── graphic.svg
+│   │   │       │   │       ├── group.svg
+│   │   │       │   │       ├── hint.svg
+│   │   │       │   │       ├── info.svg
+│   │   │       │   │       ├── lightning.svg
+│   │   │       │   │       ├── link.svg
+│   │   │       │   │       ├── lockup.svg
+│   │   │       │   │       ├── network.svg
+│   │   │       │   │       ├── outbond.svg
+│   │   │       │   │       ├── pending.svg
+│   │   │       │   │       ├── plx.svg
+│   │   │       │   │       ├── price.svg
+│   │   │       │   │       ├── profile.svg
+│   │   │       │   │       ├── project.svg
+│   │   │       │   │       ├── roadmap.svg
+│   │   │       │   │       ├── sale.svg
+│   │   │       │   │       ├── select_dropdown.svg
+│   │   │       │   │       ├── signedin.svg
+│   │   │       │   │       ├── socials.png
+│   │   │       │   │       ├── socials.svg
+│   │   │       │   │       ├── success-step.svg
+│   │   │       │   │       ├── supply.svg
+│   │   │       │   │       ├── swap_horiz.svg
+│   │   │       │   │       ├── ticker.svg
+│   │   │       │   │       ├── union.svg
+│   │   │       │   │       ├── up.svg
+│   │   │       │   │       ├── usdt.svg
+│   │   │       │   │       ├── verified.svg
+│   │   │       │   │       └── wallet.svg
+│   │   │       │   ├── linkedin.svg
+│   │   │       │   ├── logo_big.png
+│   │   │       │   ├── logo-black.png
+│   │   │       │   ├── logo-black.svg
+│   │   │       │   ├── logo.png
+│   │   │       │   ├── logo-white.svg
+│   │   │       │   ├── long-arrow-right.svg
+│   │   │       │   ├── mail.png
+│   │   │       │   ├── main-graph-mock.jpg
+│   │   │       │   ├── menu
+│   │   │       │   │   ├── bolt.svg
+│   │   │       │   │   ├── cog.svg
+│   │   │       │   │   ├── credit-card-alt.svg
+│   │   │       │   │   ├── exchange.svg
+│   │   │       │   │   ├── gift.svg
+│   │   │       │   │   ├── handshake.svg
+│   │   │       │   │   ├── headphones.svg
+│   │   │       │   │   ├── line-chart.svg
+│   │   │       │   │   ├── list-ul.svg
+│   │   │       │   │   ├── rocket.svg
+│   │   │       │   │   ├── sign-out.svg
+│   │   │       │   │   └── users.svg
+│   │   │       │   ├── minmax.svg
+│   │   │       │   ├── not-inform.png
+│   │   │       │   ├── not-verify.png
+│   │   │       │   ├── ok.png
+│   │   │       │   ├── p
+│   │   │       │   │   ├── arrow-right.svg
+│   │   │       │   │   ├── bs_icon.svg
+│   │   │       │   │   ├── check_icon.svg
+│   │   │       │   │   ├── eth_icon.svg
+│   │   │       │   │   ├── facebook_button.svg
+│   │   │       │   │   ├── file_icon.svg
+│   │   │       │   │   ├── file_icon_white.svg
+│   │   │       │   │   ├── info_icon.svg
+│   │   │       │   │   ├── participate_icon.svg
+│   │   │       │   │   ├── pdf-icon.svg
+│   │   │       │   │   ├── scan_icon.svg
+│   │   │       │   │   ├── services.png
+│   │   │       │   │   ├── Services.svg
+│   │   │       │   │   ├── t_bonuc.svg
+│   │   │       │   │   ├── t_contribution.svg
+│   │   │       │   │   ├── t_date.svg
+│   │   │       │   │   ├── t_denomination.svg
+│   │   │       │   │   ├── t_discount.svg
+│   │   │       │   │   ├── telegram_button.svg
+│   │   │       │   │   ├── tether.svg
+│   │   │       │   │   ├── timer_bg.svg
+│   │   │       │   │   ├── t_lock.svg
+│   │   │       │   │   ├── t_price.svg
+│   │   │       │   │   ├── t_to_sale.svg
+│   │   │       │   │   └── twitter_button.svg
+│   │   │       │   ├── pdf-icon.png
+│   │   │       │   ├── pencil_b.svg
+│   │   │       │   ├── pencil-square-o.svg
+│   │   │       │   ├── pencil.svg
+│   │   │       │   ├── portfolio-arrow.png
+│   │   │       │   ├── question.png
+│   │   │       │   ├── rect-green.svg
+│   │   │       │   ├── rect-orange.svg
+│   │   │       │   ├── refresh.svg
+│   │   │       │   ├── robot.png
+│   │   │       │   ├── ru.png
+│   │   │       │   ├── searchicon.png
+│   │   │       │   ├── search.svg
+│   │   │       │   ├── secure-img.png
+│   │   │       │   ├── soc
+│   │   │       │   │   ├── fb.svg
+│   │   │       │   │   ├── gh.svg
+│   │   │       │   │   ├── inst.svg
+│   │   │       │   │   ├── link.svg
+│   │   │       │   │   ├── s1.svg
+│   │   │       │   │   └── s2.svg
+│   │   │       │   ├── spinner.svg
+│   │   │       │   ├── Support.svg
+│   │   │       │   ├── swap-horiz.svg
+│   │   │       │   ├── telegram-icon.png
+│   │   │       │   ├── telegram-mini.png
+│   │   │       │   ├── telegram.svg
+│   │   │       │   ├── theme-dark.svg
+│   │   │       │   ├── times_r.svg
+│   │   │       │   ├── times.svg
+│   │   │       │   ├── top_bg.png
+│   │   │       │   ├── trade-preview.png
+│   │   │       │   ├── twitter.png
+│   │   │       │   ├── twitter.svg
+│   │   │       │   ├── usd.svg
+│   │   │       │   ├── user_b.png
+│   │   │       │   ├── User_b.svg
+│   │   │       │   ├── user.png
+│   │   │       │   ├── User.svg
+│   │   │       │   ├── us.png
+│   │   │       │   ├── verifiedaccount.png
+│   │   │       │   ├── v_white_on_transp_en.png
+│   │   │       │   ├── wallet-icon.png
+│   │   │       │   └── withdrawal.svg
+│   │   │       ├── manifest.json
+│   │   │       ├── robots.txt
+│   │   │       ├── site.webmanifest
+│   │   │       ├── sprite.svg
+│   │   │       └── TV
+│   │   │           ├── charting_library
+│   │   │           │   ├── ar-tv-chart.132c7060.html
+│   │   │           │   ├── bundles
+│   │   │           │   │   ├── 0579d40b812fa2c3ffe72e5803a6e14c.cur
+│   │   │           │   │   ├── 0.d46f0b5e9380d7893de5.js
+│   │   │           │   │   ├── 10.21e665b7935d5bc4ba64.js
+│   │   │           │   │   ├── 11.8b65dc2e0d8b6e5041c4.css
+│   │   │           │   │   ├── 11.8b65dc2e0d8b6e5041c4.rtl.css
+│   │   │           │   │   ├── 11.df012db70159a159d927.js
+│   │   │           │   │   ├── 12.37750b21f6d8d35c6e6e.js
+│   │   │           │   │   ├── 12.ef8057448f3a7ae1c3d8.css
+│   │   │           │   │   ├── 12.ef8057448f3a7ae1c3d8.rtl.css
+│   │   │           │   │   ├── 13.699469c73d09b7add56d.js
+│   │   │           │   │   ├── 13.9240f13280154f2593b7.css
+│   │   │           │   │   ├── 13.9240f13280154f2593b7.rtl.css
+│   │   │           │   │   ├── 14.8095b40dd1e7deedf401.css
+│   │   │           │   │   ├── 14.8095b40dd1e7deedf401.rtl.css
+│   │   │           │   │   ├── 14.d1148b38d59df9ca5061.js
+│   │   │           │   │   ├── 15.44f2acca80348a1da1a6.js
+│   │   │           │   │   ├── 16.680572949c1125757d35.js
+│   │   │           │   │   ├── 16.d567c9db608f3d98d8de.css
+│   │   │           │   │   ├── 16.d567c9db608f3d98d8de.rtl.css
+│   │   │           │   │   ├── 17.404a01f527881dfff424.js
+│   │   │           │   │   ├── 17.ec35a19db935279c5b42.css
+│   │   │           │   │   ├── 17.ec35a19db935279c5b42.rtl.css
+│   │   │           │   │   ├── 18.78de69cfba051874e071.js
+│   │   │           │   │   ├── 19.048f7f5d36fef428ca8d.js
+│   │   │           │   │   ├── 1.92647ec0a7beb8b2898d.css
+│   │   │           │   │   ├── 1.92647ec0a7beb8b2898d.rtl.css
+│   │   │           │   │   ├── 19.75c30426f9d3ad5ca0c5.css
+│   │   │           │   │   ├── 19.75c30426f9d3ad5ca0c5.rtl.css
+│   │   │           │   │   ├── 1df47f578aeef40dd1f2328338a133be.png
+│   │   │           │   │   ├── 1.f02c87d35fbc8ffcaedb.js
+│   │   │           │   │   ├── 20.bc09ed47c5a62e1bc5c2.js
+│   │   │           │   │   ├── 21.4c7b5cccb67a95e7e782.js
+│   │   │           │   │   ├── 21.8153544955cdc47262e3.css
+│   │   │           │   │   ├── 21.8153544955cdc47262e3.rtl.css
+│   │   │           │   │   ├── 22.ca4300bcf614d8d5f4ab.js
+│   │   │           │   │   ├── 22.da9773799a06c6066d1e.css
+│   │   │           │   │   ├── 22.da9773799a06c6066d1e.rtl.css
+│   │   │           │   │   ├── 23.256ba98e6a03200bdeba.js
+│   │   │           │   │   ├── 23.ee754f50171546186397.css
+│   │   │           │   │   ├── 23.ee754f50171546186397.rtl.css
+│   │   │           │   │   ├── 24.bc4fafedb1730259aa10.js
+│   │   │           │   │   ├── 24.e70c1623e0c74477ef2e.css
+│   │   │           │   │   ├── 24.e70c1623e0c74477ef2e.rtl.css
+│   │   │           │   │   ├── 25.7416db26ed3dcc87c05a.js
+│   │   │           │   │   ├── 2.60931787a6734697ac13.js
+│   │   │           │   │   ├── 26.3aeec391d4e6e19989ee.js
+│   │   │           │   │   ├── 26.69139a843bc1c84f790b.css
+│   │   │           │   │   ├── 26.69139a843bc1c84f790b.rtl.css
+│   │   │           │   │   ├── 27.e3ec08b1fb9df5f36ada.js
+│   │   │           │   │   ├── 28.3140e8cb507ad2593c76.css
+│   │   │           │   │   ├── 28.3140e8cb507ad2593c76.rtl.css
+│   │   │           │   │   ├── 28.9f103042c27ea2df422f.js
+│   │   │           │   │   ├── 29.07af6dca962ea27209f0.css
+│   │   │           │   │   ├── 29.07af6dca962ea27209f0.rtl.css
+│   │   │           │   │   ├── 29.3df8712b85d45a626aa0.js
+│   │   │           │   │   ├── 30.0b732ccb122d160480b6.js
+│   │   │           │   │   ├── 31.8d2b7a538755fd1bb760.js
+│   │   │           │   │   ├── 32.13ce02217cf8f9dd6d90.js
+│   │   │           │   │   ├── 3293616ec0c605c7c2db25829a0a509e.woff
+│   │   │           │   │   ├── 33.02ed7df481ae8243d2f2.css
+│   │   │           │   │   ├── 33.02ed7df481ae8243d2f2.rtl.css
+│   │   │           │   │   ├── 33.4d0dd1f7001fc02099bb.js
+│   │   │           │   │   ├── 34.4b6099931f57311efc1a.css
+│   │   │           │   │   ├── 34.4b6099931f57311efc1a.rtl.css
+│   │   │           │   │   ├── 34.c9baa59add71a1e48fd2.js
+│   │   │           │   │   ├── 35.999f0e072062b7369a1a.css
+│   │   │           │   │   ├── 35.999f0e072062b7369a1a.rtl.css
+│   │   │           │   │   ├── 35.ed9e360f9686ad3a9497.js
+│   │   │           │   │   ├── 36.1882d1a8d312a0e193e9.js
+│   │   │           │   │   ├── 36.f315a19c17d5636af8f7.css
+│   │   │           │   │   ├── 36.f315a19c17d5636af8f7.rtl.css
+│   │   │           │   │   ├── 3.76c398b01b707e5b251c.js
+│   │   │           │   │   ├── 37.90129e4904155350d6a1.js
+│   │   │           │   │   ├── 38.41f3d509b61c8af47de3.js
+│   │   │           │   │   ├── 39.74a7bc3b464cd284827f.css
+│   │   │           │   │   ├── 39.74a7bc3b464cd284827f.rtl.css
+│   │   │           │   │   ├── 39.bc1e9ce938fd5152831f.js
+│   │   │           │   │   ├── 3.eeb90413029441681f91.css
+│   │   │           │   │   ├── 3.eeb90413029441681f91.rtl.css
+│   │   │           │   │   ├── 40566afd832a155e5e370a8bd423de4b.svg
+│   │   │           │   │   ├── 40.b59f41ba4cacbfb8acc3.js
+│   │   │           │   │   ├── 40f9a03d174178efb12303caa9bc7cd8.woff2
+│   │   │           │   │   ├── 41.8fa0fb0bd4ad0241ef2f.css
+│   │   │           │   │   ├── 41.8fa0fb0bd4ad0241ef2f.rtl.css
+│   │   │           │   │   ├── 41.a19b0ae5d68f855d2753.js
+│   │   │           │   │   ├── 42.494986b0981f6d116fef.js
+│   │   │           │   │   ├── 42.9078fb8f1629e3eee9bd.css
+│   │   │           │   │   ├── 42.9078fb8f1629e3eee9bd.rtl.css
+│   │   │           │   │   ├── 43.619c5ed4a592cc2965a4.js
+│   │   │           │   │   ├── 43.8bf90585004742c338c5.css
+│   │   │           │   │   ├── 43.8bf90585004742c338c5.rtl.css
+│   │   │           │   │   ├── 44.0a7df307e4f397763ce8.js
+│   │   │           │   │   ├── 45.12a19785e3864bd62a76.css
+│   │   │           │   │   ├── 45.12a19785e3864bd62a76.rtl.css
+│   │   │           │   │   ├── 45.db9dbd3e9bfeca5333da.js
+│   │   │           │   │   ├── 46.f1d4cfe6d6f830b4a011.js
+│   │   │           │   │   ├── 47.a3da3f774c90bd22798e.js
+│   │   │           │   │   ├── 48.a3fdb9dd54af71b3bda6.css
+│   │   │           │   │   ├── 48.a3fdb9dd54af71b3bda6.rtl.css
+│   │   │           │   │   ├── 48.a93f9cb8b1bcc0e0f21e.js
+│   │   │           │   │   ├── 4.92647ec0a7beb8b2898d.css
+│   │   │           │   │   ├── 4.92647ec0a7beb8b2898d.rtl.css
+│   │   │           │   │   ├── 49.bacd609f7eb77a4a4b68.js
+│   │   │           │   │   ├── 49.d723843c9192493b8c13.css
+│   │   │           │   │   ├── 49.d723843c9192493b8c13.rtl.css
+│   │   │           │   │   ├── 4a9abefd31dab7c8239e02e925aacd78.png
+│   │   │           │   │   ├── 4.c7430b8d89cddcf51345.js
+│   │   │           │   │   ├── 4fafff07d8914dc11f6d335f606ff47c.png
+│   │   │           │   │   ├── 50.8d5cba5b90176d3d2e3d.css
+│   │   │           │   │   ├── 50.8d5cba5b90176d3d2e3d.rtl.css
+│   │   │           │   │   ├── 50.b282667dddcb7fe1569a.js
+│   │   │           │   │   ├── 51.11871c50951db825ace3.js
+│   │   │           │   │   ├── 51.300c3df03ca063ec03a0.css
+│   │   │           │   │   ├── 51.300c3df03ca063ec03a0.rtl.css
+│   │   │           │   │   ├── 52.0379a85baae3ab43b15c.js
+│   │   │           │   │   ├── 52.29cec22b3525b47af67e.css
+│   │   │           │   │   ├── 52.29cec22b3525b47af67e.rtl.css
+│   │   │           │   │   ├── 53.1d3ec98cfb8e19affb1c.js
+│   │   │           │   │   ├── 54.bb5888ae55ea0a253a5b.js
+│   │   │           │   │   ├── 55.3c35a629db21ab961f11.js
+│   │   │           │   │   ├── 5.5e97b270ab80d99e9085.js
+│   │   │           │   │   ├── 56.b3e69145c0fee614443d.js
+│   │   │           │   │   ├── 57.236996ec416da4c1f683.js
+│   │   │           │   │   ├── 58.7ffac4ba908b95705e63.js
+│   │   │           │   │   ├── 59.397cb6699b74d64072a8.js
+│   │   │           │   │   ├── 59.418f1db161eefae63284.css
+│   │   │           │   │   ├── 59.418f1db161eefae63284.rtl.css
+│   │   │           │   │   ├── 60.6b5eced2ef8fa856be88.js
+│   │   │           │   │   ├── 60.d4583c71cca790a25900.css
+│   │   │           │   │   ├── 60.d4583c71cca790a25900.rtl.css
+│   │   │           │   │   ├── 61.38a3040c925fadff7b64.js
+│   │   │           │   │   ├── 6.2221bb6a5d920bbb4bb2.css
+│   │   │           │   │   ├── 6.2221bb6a5d920bbb4bb2.rtl.css
+│   │   │           │   │   ├── 62.63b309f5f8da9ca013b8.js
+│   │   │           │   │   ├── 6.2d67b0ae77825dbd455d.js
+│   │   │           │   │   ├── 63.8255c7f5191bcafcee7c.js
+│   │   │           │   │   ├── 63.898a61bf08239711dc74.css
+│   │   │           │   │   ├── 63.898a61bf08239711dc74.rtl.css
+│   │   │           │   │   ├── 64.6f232bdb0fb4cdcc2d7d.css
+│   │   │           │   │   ├── 64.6f232bdb0fb4cdcc2d7d.rtl.css
+│   │   │           │   │   ├── 64.ec4b4d03b28c77658dde.js
+│   │   │           │   │   ├── 65.556980fc277562af83c8.css
+│   │   │           │   │   ├── 65.556980fc277562af83c8.rtl.css
+│   │   │           │   │   ├── 65.f895a78b4e04257983ff.js
+│   │   │           │   │   ├── 66.2979e9b7c35e7bf03a37.js
+│   │   │           │   │   ├── 66.84b4001b5c622a569dde.css
+│   │   │           │   │   ├── 66.84b4001b5c622a569dde.rtl.css
+│   │   │           │   │   ├── 67.19c83a0c303c290216d2.css
+│   │   │           │   │   ├── 67.19c83a0c303c290216d2.rtl.css
+│   │   │           │   │   ├── 67.25fd4b78c8c514988aeb.js
+│   │   │           │   │   ├── 68.8b4124c875484d11fd94.js
+│   │   │           │   │   ├── 68.fa7424ae9c5fe5483aac.css
+│   │   │           │   │   ├── 68.fa7424ae9c5fe5483aac.rtl.css
+│   │   │           │   │   ├── 69.094b4a764d3dc17820cf.css
+│   │   │           │   │   ├── 69.094b4a764d3dc17820cf.rtl.css
+│   │   │           │   │   ├── 69.43756a5c7477730eb0c4.js
+│   │   │           │   │   ├── 70.c27146ec029eda556108.css
+│   │   │           │   │   ├── 70.c27146ec029eda556108.rtl.css
+│   │   │           │   │   ├── 70.cb9d1bb5a00896c1bb97.js
+│   │   │           │   │   ├── 71.15e639d294c4209f256e.css
+│   │   │           │   │   ├── 71.15e639d294c4209f256e.rtl.css
+│   │   │           │   │   ├── 71.6a9d0842f5e48f68399c.js
+│   │   │           │   │   ├── 72.07441fd67b864b86147b.css
+│   │   │           │   │   ├── 72.07441fd67b864b86147b.rtl.css
+│   │   │           │   │   ├── 7.2c7c4f8a49c6380227de.js
+│   │   │           │   │   ├── 72.e3925aaf38d2c8997638.js
+│   │   │           │   │   ├── 73.6b8b9e5e2c8e2b753cb8.css
+│   │   │           │   │   ├── 73.6b8b9e5e2c8e2b753cb8.rtl.css
+│   │   │           │   │   ├── 73.8ca1a096c5bdc2e5fb8a.js
+│   │   │           │   │   ├── 7393f661fc7d4389ea6d4dabd2a5aeea.png
+│   │   │           │   │   ├── 74.34dcc0d3cd1bbfa5e951.js
+│   │   │           │   │   ├── 74.8c591c252b2e7ad8f744.css
+│   │   │           │   │   ├── 74.8c591c252b2e7ad8f744.rtl.css
+│   │   │           │   │   ├── 75.1c9a3a6524248ddf88bf.js
+│   │   │           │   │   ├── 75.fefbc386c59bf7d4f9f7.css
+│   │   │           │   │   ├── 75.fefbc386c59bf7d4f9f7.rtl.css
+│   │   │           │   │   ├── 76.5d20bed213399f326603.js
+│   │   │           │   │   ├── 76.f14d71a31295d8cd8d8b.css
+│   │   │           │   │   ├── 76.f14d71a31295d8cd8d8b.rtl.css
+│   │   │           │   │   ├── 77.3e4ccccc7d3eb03c488f.js
+│   │   │           │   │   ├── 77.9c35f7046b848fbfd7f5.css
+│   │   │           │   │   ├── 77.9c35f7046b848fbfd7f5.rtl.css
+│   │   │           │   │   ├── 78.0d502ab4d94441708606.css
+│   │   │           │   │   ├── 78.0d502ab4d94441708606.rtl.css
+│   │   │           │   │   ├── 78.1d1d47a915b06f1496fb.js
+│   │   │           │   │   ├── 79.86e92b77f8cf32e6bc37.js
+│   │   │           │   │   ├── 79.b990749a4839f9123f26.css
+│   │   │           │   │   ├── 79.b990749a4839f9123f26.rtl.css
+│   │   │           │   │   ├── 7e0cc5f7d7f5151500dd60b8d6ca60a1.png
+│   │   │           │   │   ├── 80.5bdd53d5fc42d40eee28.css
+│   │   │           │   │   ├── 80.5bdd53d5fc42d40eee28.rtl.css
+│   │   │           │   │   ├── 80.b5bc6acec3b531a510a9.js
+│   │   │           │   │   ├── 81.552e046aa828739c508b.css
+│   │   │           │   │   ├── 81.552e046aa828739c508b.rtl.css
+│   │   │           │   │   ├── 81.e6a1f76017a44b03480b.js
+│   │   │           │   │   ├── 82.8c2919e6c8f54e36e9e6.js
+│   │   │           │   │   ├── 82.e06fe84c8cdead4bd52e.css
+│   │   │           │   │   ├── 82.e06fe84c8cdead4bd52e.rtl.css
+│   │   │           │   │   ├── 83.e238aa056c5d4827cbdd.css
+│   │   │           │   │   ├── 83.e238aa056c5d4827cbdd.rtl.css
+│   │   │           │   │   ├── 83.f3e53bb5a5940e084955.js
+│   │   │           │   │   ├── 84.8acc496b4deeeeefb5af.js
+│   │   │           │   │   ├── 84.bb4fc57627c8626019fd.css
+│   │   │           │   │   ├── 84.bb4fc57627c8626019fd.rtl.css
+│   │   │           │   │   ├── 85.39c78fbeaabae306f343.js
+│   │   │           │   │   ├── 85.e0ba32bafcab02208901.css
+│   │   │           │   │   ├── 85.e0ba32bafcab02208901.rtl.css
+│   │   │           │   │   ├── 86.4bbbb9e6262243419986.js
+│   │   │           │   │   ├── 86.9244fc2bcc2370425a15.css
+│   │   │           │   │   ├── 86.9244fc2bcc2370425a15.rtl.css
+│   │   │           │   │   ├── 87.605cbc508223ec27341c.css
+│   │   │           │   │   ├── 87.605cbc508223ec27341c.rtl.css
+│   │   │           │   │   ├── 87.cf03fa0a76bfcadd157d.js
+│   │   │           │   │   ├── 88.158dd8a18e176936a343.css
+│   │   │           │   │   ├── 88.158dd8a18e176936a343.rtl.css
+│   │   │           │   │   ├── 88.d1e3aec63ece25f6b8a9.js
+│   │   │           │   │   ├── 89.5f142643917701de773b.css
+│   │   │           │   │   ├── 89.5f142643917701de773b.rtl.css
+│   │   │           │   │   ├── 898929f1acdb622689e0fc0c95c8fcd0.png
+│   │   │           │   │   ├── 89.d8aa43b4b9378722d572.js
+│   │   │           │   │   ├── 8.e66ab8f27911a033604f.css
+│   │   │           │   │   ├── 8.e66ab8f27911a033604f.rtl.css
+│   │   │           │   │   ├── 8.ffab20b86db484062268.js
+│   │   │           │   │   ├── 90.877114560c4828a97702.css
+│   │   │           │   │   ├── 90.877114560c4828a97702.rtl.css
+│   │   │           │   │   ├── 90.ce47bb68fc3fc88b5590.js
+│   │   │           │   │   ├── 91.2142b248a2bb29549a99.css
+│   │   │           │   │   ├── 91.2142b248a2bb29549a99.rtl.css
+│   │   │           │   │   ├── 91.a9b79ef7ba0a62311a53.js
+│   │   │           │   │   ├── 92.76d5ca7ebec10a1a7a12.js
+│   │   │           │   │   ├── 92.e46f0aa06bcdbddf3831.css
+│   │   │           │   │   ├── 92.e46f0aa06bcdbddf3831.rtl.css
+│   │   │           │   │   ├── 93.17d34ca77a7fc85a24d9.css
+│   │   │           │   │   ├── 93.17d34ca77a7fc85a24d9.rtl.css
+│   │   │           │   │   ├── 93.6de56ef1975f4a31e542.js
+│   │   │           │   │   ├── 94.231bea5fb12b806ef287.js
+│   │   │           │   │   ├── 94.b204218cb73b576333a1.css
+│   │   │           │   │   ├── 94.b204218cb73b576333a1.rtl.css
+│   │   │           │   │   ├── 95.51244d1c4baf49d08807.css
+│   │   │           │   │   ├── 95.51244d1c4baf49d08807.rtl.css
+│   │   │           │   │   ├── 95.6f7da80aac5cf2bf77d6.js
+│   │   │           │   │   ├── 96.43bb935eee30715afff7.js
+│   │   │           │   │   ├── 96.be9ad3d6a7c91501bb55.css
+│   │   │           │   │   ├── 96.be9ad3d6a7c91501bb55.rtl.css
+│   │   │           │   │   ├── 9.84ecbc930e51cb26d06a.js
+│   │   │           │   │   ├── 9.8ab09f93a5113a634119.css
+│   │   │           │   │   ├── 9.8ab09f93a5113a634119.rtl.css
+│   │   │           │   │   ├── a6506134daec7169f68f563f084a9d41.svg
+│   │   │           │   │   ├── add-compare-dialog.f980c19f222ff9cb8fe6.js
+│   │   │           │   │   ├── b1a63a011fd92dfb93db6db243bb036c.woff2
+│   │   │           │   │   ├── change-interval-dialog.e928f8dec65c9244cafe.js
+│   │   │           │   │   ├── chart-bottom-toolbar.b2e895a5fd3f204fb6b6.js
+│   │   │           │   │   ├── chart-event-hint.94e94e93f9fdee936b66.js
+│   │   │           │   │   ├── chart-screenshot-hint.14bfec43c52bc3d28f82.js
+│   │   │           │   │   ├── chart-widget-gui.226991e9f53aba124fc2.js
+│   │   │           │   │   ├── compare-model.0e6bbdc5f5942c9a716e.js
+│   │   │           │   │   ├── context-menu-renderer.7f6f59270ef0f3afa2ed.js
+│   │   │           │   │   ├── currency-label-menu.a7a0c0e44d64b092f2cc.js
+│   │   │           │   │   ├── custom-intervals-add-dialog.bb64431fb1c6d852f9f1.js
+│   │   │           │   │   ├── drawing-toolbar.8cc497633535648562e7.js
+│   │   │           │   │   ├── ed68e83c16f77203e73dbc4c3a7c7fa1.cur
+│   │   │           │   │   ├── export-data.c819cfa996e2815ff11d.js
+│   │   │           │   │   ├── f55394b616ed1ae9462c37daab941d93.png
+│   │   │           │   │   ├── floating-toolbars.d78a058b82ab09013aac.js
+│   │   │           │   │   ├── full-tooltips-popup.96fc751e06523b742440.js
+│   │   │           │   │   ├── general-chart-properties-dialog.b08948e0c90aebf07ebd.js
+│   │   │           │   │   ├── general-property-page.32bdfdbafbd81d9e83c6.js
+│   │   │           │   │   ├── go-to-date-dialog-impl.3481c4fcfde2f4d46426.js
+│   │   │           │   │   ├── hammerjs.e5489031ed611f47bf09.js
+│   │   │           │   │   ├── header-toolbar.4bff61e047f9b8379494.js
+│   │   │           │   │   ├── library.237999374a0f9a719893.js
+│   │   │           │   │   ├── library.579e6e3fd95b660ad833.css
+│   │   │           │   │   ├── library.579e6e3fd95b660ad833.rtl.css
+│   │   │           │   │   ├── line-tools-icons.090f39d92664af3915a5.js
+│   │   │           │   │   ├── load-chart-dialog.6cc1a47b17698c0108cb.js
+│   │   │           │   │   ├── lollipop-tooltip-renderer.6705b971a2e73c26ecad.js
+│   │   │           │   │   ├── lt-pane-views.4d2ee6c5330cd3760eb0.js
+│   │   │           │   │   ├── lt-property-pages-with-definitions.a5e8283e77afa66b5636.js
+│   │   │           │   │   ├── manage-drawings-dialog.1c0c3737002fa63fe6a6.js
+│   │   │           │   │   ├── moment.78e587a83a009ca48cda.js
+│   │   │           │   │   ├── new-confirm-inputs-dialog.00d79c2263e005170345.js
+│   │   │           │   │   ├── new-edit-object-dialog.0ed1c3834cfc0e834aed.js
+│   │   │           │   │   ├── object-tree-dialog.5b98d078925b3addfb0a.js
+│   │   │           │   │   ├── react.9f2899b40ad0e104f6c9.js
+│   │   │           │   │   ├── redux.43c3f6d214bcf2d1fbd1.js
+│   │   │           │   │   ├── restricted-toolset.08fefbae2bc0877b0ef2.js
+│   │   │           │   │   ├── runtime.c6da8e1e9c16eccdffac.js
+│   │   │           │   │   ├── series-icons-map.ec8043f64d8b06dbce29.js
+│   │   │           │   │   ├── series-pane-views.eefe35e1c508ac16c102.js
+│   │   │           │   │   ├── share-chart-to-social-utils.c225af2051efd23269e0.js
+│   │   │           │   │   ├── show-theme-save-dialog.f81ebf1b2ce08f4399fd.js
+│   │   │           │   │   ├── simple-dialog.bd79f02afd512f0f36dd.js
+│   │   │           │   │   ├── source-properties-editor.e858d44541ebb6f974a2.js
+│   │   │           │   │   ├── study-market.3efd7bf7bc6e6fc7db2d.js
+│   │   │           │   │   ├── study-pane-views.9a873dcf74adedf7600b.js
+│   │   │           │   │   ├── study-property-pages-with-definitions.ca4fc2ef5a4deff8c0bb.js
+│   │   │           │   │   ├── study-template-dialog.fe56a9893a3695e93531.js
+│   │   │           │   │   ├── symbol-info-dialog-impl.17daedab6f893acdeae4.js
+│   │   │           │   │   ├── symbol-search-dialog.fd3311eee8604f807c80.js
+│   │   │           │   │   ├── take-chart-image-impl.c0e6073dcac3041eecf2.js
+│   │   │           │   │   └── vendors.6f5e0d8d267cb3e63ee0.js
+│   │   │           │   ├── charting_library.cjs.js
+│   │   │           │   ├── charting_library.d.ts
+│   │   │           │   ├── charting_library.esm.js
+│   │   │           │   ├── charting_library.js
+│   │   │           │   ├── charting_library.standalone.js
+│   │   │           │   ├── cs-tv-chart.132c7060.html
+│   │   │           │   ├── da_DK-tv-chart.132c7060.html
+│   │   │           │   ├── datafeed-api.d.ts
+│   │   │           │   ├── de-tv-chart.132c7060.html
+│   │   │           │   ├── el-tv-chart.132c7060.html
+│   │   │           │   ├── en-tv-chart.132c7060.html
+│   │   │           │   ├── es-tv-chart.132c7060.html
+│   │   │           │   ├── et_EE-tv-chart.132c7060.html
+│   │   │           │   ├── fa-tv-chart.132c7060.html
+│   │   │           │   ├── fr-tv-chart.132c7060.html
+│   │   │           │   ├── he_IL-tv-chart.132c7060.html
+│   │   │           │   ├── hu_HU-tv-chart.132c7060.html
+│   │   │           │   ├── id_ID-tv-chart.132c7060.html
+│   │   │           │   ├── it-tv-chart.132c7060.html
+│   │   │           │   ├── ja-tv-chart.132c7060.html
+│   │   │           │   ├── ko-tv-chart.132c7060.html
+│   │   │           │   ├── ms_MY-tv-chart.132c7060.html
+│   │   │           │   ├── nl_NL-tv-chart.132c7060.html
+│   │   │           │   ├── no-tv-chart.132c7060.html
+│   │   │           │   ├── package.json
+│   │   │           │   ├── pl-tv-chart.132c7060.html
+│   │   │           │   ├── pt-tv-chart.132c7060.html
+│   │   │           │   ├── ro-tv-chart.132c7060.html
+│   │   │           │   ├── ru-tv-chart.132c7060.html
+│   │   │           │   ├── sk_SK-tv-chart.132c7060.html
+│   │   │           │   ├── sv-tv-chart.132c7060.html
+│   │   │           │   ├── th-tv-chart.132c7060.html
+│   │   │           │   ├── tr-tv-chart.132c7060.html
+│   │   │           │   ├── vi-tv-chart.132c7060.html
+│   │   │           │   ├── zh-tv-chart.132c7060.html
+│   │   │           │   └── zh_TW-tv-chart.132c7060.html
+│   │   │           └── datafeeds
+│   │   │               ├── README.md
+│   │   │               └── udf
+│   │   │                   ├── dist
+│   │   │                   │   └── bundle.js
+│   │   │                   ├── lib
+│   │   │                   │   ├── data-pulse-provider.js
+│   │   │                   │   ├── helpers.js
+│   │   │                   │   ├── history-provider.js
+│   │   │                   │   ├── iquotes-provider.js
+│   │   │                   │   ├── quotes-provider.js
+│   │   │                   │   ├── quotes-pulse-provider.js
+│   │   │                   │   ├── requester.js
+│   │   │                   │   ├── symbols-storage.js
+│   │   │                   │   ├── udf-compatible-datafeed-base.js
+│   │   │                   │   └── udf-compatible-datafeed.js
+│   │   │                   ├── .npmrc
+│   │   │                   ├── package.json
+│   │   │                   ├── README.md
+│   │   │                   ├── rollup.config.js
+│   │   │                   ├── src
+│   │   │                   │   ├── data-pulse-provider.ts
+│   │   │                   │   ├── helpers.ts
+│   │   │                   │   ├── history-provider.ts
+│   │   │                   │   ├── iquotes-provider.ts
+│   │   │                   │   ├── quotes-provider.ts
+│   │   │                   │   ├── quotes-pulse-provider.ts
+│   │   │                   │   ├── requester.ts
+│   │   │                   │   ├── symbols-storage.ts
+│   │   │                   │   ├── udf-compatible-datafeed-base.ts
+│   │   │                   │   └── udf-compatible-datafeed.ts
+│   │   │                   └── tsconfig.json
+│   │   ├── store
+│   │   │   ├── core
+│   │   │   │   ├── actions.js
+│   │   │   │   ├── getters.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── mutations.js
+│   │   │   │   ├── mutation-types.js
+│   │   │   │   └── state.js
+│   │   │   ├── index.js
+│   │   │   └── modules
+│   │   │       ├── main.js
+│   │   │       └── robot.js
+│   │   └── utilities
+│   │       ├── consts.js
+│   │       ├── helpers.js
+│   │       ├── lazyLoad.js
+│   │       └── manager.js
+│   ├── tailwind.config.js
+│   ├── tsconfig.json
+│   ├── vite.config.ts
+│   └── yarn.lock
+├── Nexvax-JS-admin
+│   ├── .gitignore
+│   ├── index.html
+│   ├── LICENSE.md
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── postcss.config.js
+│   ├── public
+│   │   └── vite.svg
+│   ├── README.md
+│   ├── src
+│   │   ├── App.vue
+│   │   ├── assets
+│   │   │   └── vue.svg
+│   │   ├── components
+│   │   │   ├── BotConfig.vue
+│   │   │   ├── CardHeading.vue
+│   │   │   ├── Create.vue
+│   │   │   ├── Dashboard.vue
+│   │   │   ├── Edit.vue
+│   │   │   ├── layout
+│   │   │   │   └── SideBar.vue
+│   │   │   ├── Show.vue
+│   │   │   ├── TableBlock.vue
+│   │   │   └── UserGroups.vue
+│   │   ├── example.local_config.js
+│   │   ├── index.css
+│   │   ├── main.ts
+│   │   ├── pages
+│   │   │   ├── ContentPage.vue
+│   │   │   ├── Index.vue
+│   │   │   └── LoginPage.vue
+│   │   ├── plugins
+│   │   │   ├── axios.js
+│   │   │   └── helpers.js
+│   │   ├── router
+│   │   │   └── index.ts
+│   │   ├── stores
+│   │   │   └── nav.js
+│   │   └── vite-env.d.ts
+│   ├── tailwind.config.js
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   ├── vite.config.ts
+│   └── yarn.lock
+├── Nexvax-static
+│   ├── components
+│   │   ├── Footer.vue
+│   │   ├── Header.vue
+│   │   ├── Loader.vue
+│   │   └── main
+│   │       ├── Block1.vue
+│   │       ├── Block2.vue
+│   │       ├── Block4.vue
+│   │       ├── Block5.vue
+│   │       └── CurrencyList.vue
+│   ├── .editorconfig
+│   ├── .eslintrc.js
+│   ├── fonts
+│   │   ├── icomoon
+│   │   │   ├── icomoon.eot
+│   │   │   ├── icomoon.svg
+│   │   │   ├── icomoon.ttf
+│   │   │   └── icomoon.woff
+│   │   ├── OpenSansBold
+│   │   │   ├── OpenSans-Bold.eot
+│   │   │   ├── OpenSans-Bold.svg
+│   │   │   ├── OpenSans-Bold.ttf
+│   │   │   ├── OpenSans-Bold.woff
+│   │   │   └── OpenSans-Bold.woff2
+│   │   ├── OpenSansExtraBold
+│   │   │   ├── OpenSansExtraBold.eot
+│   │   │   ├── OpenSansExtraBold.ttf
+│   │   │   └── OpenSansExtraBold.woff
+│   │   ├── OpenSansLight
+│   │   │   ├── OpenSansLight.eot
+│   │   │   ├── OpenSansLight.ttf
+│   │   │   └── OpenSansLight.woff
+│   │   ├── OpenSansLightItalic
+│   │   │   ├── OpenSansLightItalic.eot
+│   │   │   ├── OpenSansLightItalic.ttf
+│   │   │   └── OpenSansLightItalic.woff
+│   │   ├── OpenSansRegular
+│   │   │   ├── OpenSansRegular.eot
+│   │   │   ├── OpenSansRegular.ttf
+│   │   │   └── OpenSansRegular.woff
+│   │   └── ProximaNova
+│   │       ├── Proxima Nova Light.otf
+│   │       ├── Proxima Nova Regular.otf
+│   │       ├── Proxima Nova Thin.otf
+│   │       └── Thumbs.db
+│   ├── .gitignore
+│   ├── jsconfig.json
+│   ├── layouts
+│   │   ├── default.vue
+│   │   ├── errorLayout.vue
+│   │   └── error.vue
+│   ├── LICENSE.md
+│   ├── locales
+│   │   └── en.js
+│   ├── mixins
+│   │   ├── numberFormatter.js
+│   │   └── parseDate.js
+│   ├── nuxt.config.js
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── pages
+│   │   └── index.vue
+│   ├── plugins
+│   │   ├── axios.js
+│   │   └── highcharts.js
+│   ├── .prettierrc
+│   ├── README.md
+│   ├── serverMiddleware
+│   │   └── redirects.js
+│   ├── static
+│   │   ├── favicon.ico
+│   │   ├── img
+│   │   │   ├── 1.png
+│   │   │   ├── 2.png
+│   │   │   ├── 3.png
+│   │   │   ├── 4.png
+│   │   │   ├── arr-b.svg
+│   │   │   ├── arr.svg
+│   │   │   ├── biglogo.png
+│   │   │   ├── bottom1.png
+│   │   │   ├── bottom2.png
+│   │   │   ├── bottom3.png
+│   │   │   ├── btc.svg
+│   │   │   ├── burger.svg
+│   │   │   ├── graph-empty.png
+│   │   │   ├── laptop.png
+│   │   │   ├── logo_st-black.svg
+│   │   │   ├── logo_st.png
+│   │   │   ├── logo_st.svg
+│   │   │   └── top.png
+│   │   ├── main.css
+│   │   └── static
+│   │       └── favicon.ico
+│   ├── store
+│   │   ├── index.js
+│   │   └── README.md
+│   ├── styles
+│   │   └── fonts.css
+│   └── yarn.lock
+├── NOTICE
+└── README.md
+
+248 directories, 1940 files
