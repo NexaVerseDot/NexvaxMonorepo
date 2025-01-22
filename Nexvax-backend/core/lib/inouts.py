@@ -111,7 +111,7 @@ class StripeGate(BasePayGate):
         payment_intent = data.get('data', {}).get('object', {})
         if payment_intent.get('status') == 'succeeded':
             state = COMPLETED
-        elif payment_intent.get('status') == 'canceled':
-            state = CANCELLED
+        elif payment_intent.get('status') == 'cancelled':
+            state = FAILED
             
         super().do_topup_update(instance, state, data)

@@ -14,6 +14,9 @@ export default defineConfig({
       "~": path.resolve(__dirname, "./src"),
     },
   },
+  define: {
+    __STRIPE_ENABLED__: true
+  },
   // optimizeDeps: {
   //   include: ['~/../public/TradingView/charting_library/charting_library.min.js']
   // }

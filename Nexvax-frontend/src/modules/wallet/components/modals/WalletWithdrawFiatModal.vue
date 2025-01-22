@@ -25,17 +25,14 @@
             type="text"
             autocomplete="off"
           />
-          <p class="title">
-            {{ $t("common.amounttowww") }}
-          </p>
-          <label class="server-fee">
-            {{
-              $config.currentWithdrawCardPaySystem === $config.PaySystems.cauri
-                ? serverWithdrawCalculatedFee
-                : fiatWithdrawCalculatedWithFee
-            }}
-          </label>
-          <br />
+          <template v-if="$config.currentWithdrawCardPaySystem === $config.PaySystems.stripe">
+            <p class="title">
+              {{ $t("common.amounttowww") }}
+            </p>
+            <label class="server-fee">
+              {{ serverWithdrawCalculatedFee }}
+            </label>
+          </template>
           <p class="title">{{ $t("common.cardnumber") }}&nbsp;</p>
           <input
             v-model="cardNumber"
@@ -183,17 +180,15 @@ export default {
       const amount = Number.parseFloat(this.amount);
 
       if (
-        this.$config.currentWithdrawCardPaySystem ===
-          this.$config.PaySystems.cauri &&
+        this.$config.currentWithdrawCardPaySystem === this.$config.PaySystems.stripe &&
         (method === "visa" || method === "mastercard") &&
-        (currency === "RUB" || currency === "EUR") &&
         parseFloat(amount) >= withdrawLimits.min &&
         parseFloat(amount) <= withdrawLimits.max
       ) {
         this.calculateWithdrawFeeOnServer({
           target_amount: parseFloat(amount),
           currency: currency,
-          gate_id: 5,
+          gate_id: 10
         });
       } else {
         this.clearServerWithdrawCalculatedFee();
@@ -215,10 +210,9 @@ export default {
       this.serverWithdrawCalculatedFee = "0.00";
     },
     withdraw() {
-      if (
-        this.$config.currentWithdrawCardPaySystem ===
-        this.$config.PaySystems.cauri
-      ) {
+      if (this.$config.currentWithdrawCardPaySystem === this.$config.PaySystems.stripe) {
+        this.WWWMewithStripe();
+      } else if (this.$config.currentWithdrawCardPaySystem === this.$config.PaySystems.cauri) {
         this.WWWMewithCauri();
       } else {
         this.WWWMewithINTERKASSA();
@@ -296,8 +290,6 @@ export default {
             if (err.data[0] === "Payouts freezed") {
               this.errorMessage = this.$t("common.payouts_freezed");
             }
-          } else if (err.status === 500) {
-            this.errorMessage = this.$t("common.wrong_data");
           } else {
             this.errorMessage = this.$t("common.error");
           }
@@ -404,14 +396,50 @@ export default {
             if (err.data[0] === "Payouts freezed") {
               this.errorMessage = this.$t("common.payouts_freezed");
             }
-          } else if (err.status === 500) {
-            this.errorMessage = this.$t("common.wrong_data");
           } else {
             this.errorMessage = this.$t("common.error");
           }
         }
       );
-      //
+    },
+    WWWMewithStripe() {
+      const cardNumber = this.cardNumber.toString();
+
+      if (!/^(4|5|6)[0-9]{12}(?:[0-9]{3}|[0-9]{5})?$/.test(cardNumber)) {
+        this.errorMessage = this.$t("common.wrong_card_number_format");
+        return;
+      }
+
+      const config = {
+        currency: this.currency,
+        amount: this.addSpaceFixDecimal(this.amount, 2),
+        gate_id: 10,
+        data: { 
+          method: this.method, 
+          details: { user: cardNumber }
+        }
+      };
+
+      this.$http.post("sci/withdrawal/", config).then(
+        () => {
+          this.amount = "";
+          this.errorMessage = "";
+          this.cardNumber = "";
+          this.$notify({
+            text: this.$t("common.withdrawSuccess"),
+          });
+          this.$modal.close();
+        },
+        (err) => {
+          if (err.data?.non_field_errors) {
+            this.errorMessage = err.data.non_field_errors[0];
+          } else if (err.data?.detail === "NotEnoughFunds") {
+            this.errorMessage = this.$t("common.not_enough_funds");
+          } else {
+            this.errorMessage = this.$t("common.payment_failed");
+          }
+        }
+      );
     },
     clearCauriEuroDetails() {
       Object.keys(this.cauriEuroDetails).forEach((field) => {

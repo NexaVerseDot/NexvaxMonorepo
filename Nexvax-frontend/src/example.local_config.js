@@ -12,6 +12,10 @@ const localConfig = {
     basePublicURL: "https://${DOMAIN}/api/public/v1/",
     host: "${DOMAIN}",
   },
+  stripe: {
+    publicKey: "${STRIPE_PUBLIC_KEY}",
+    gateway_id: 10
+  },
   api_url: "https://${DOMAIN}",
   api_url_plane: "${DOMAIN}",
   recaptcha_site_key: "${RECAPTCHA}",

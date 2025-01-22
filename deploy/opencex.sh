@@ -101,6 +101,19 @@ echo -n "SUPPORT_EMAIL: "
 read SUPPORT_EMAIL
 export SUPPORT_EMAIL
 
+# Add Stripe configuration
+echo -n "Stripe Public Key*: "
+read STRIPE_PUBLIC_KEY
+export STRIPE_PUBLIC_KEY
+
+echo -n "Stripe Secret Key*: "
+read STRIPE_SECRET_KEY
+export STRIPE_SECRET_KEY
+
+echo -n "Stripe Webhook Secret*: "
+read STRIPE_WEBHOOK_SECRET
+export STRIPE_WEBHOOK_SECRET
+
 #TELEGRAM - telegram chat URL (i.e. opencex)
 #FACEBOOK - facebook page URL
 #TWITTER - twitter page URL

@@ -256,6 +256,7 @@ import SecurityNoticeModal from "../components/modals/SecurityNoticeModal.vue";
 import WalletHistory from "../components/WalletHistory.vue";
 import InfoModal from "../components/modals/InfoModal.vue";
 import WalletDepositSepaFialModal from "../components/modals/WalletDepositSepaFialModal.vue";
+import WalletDepositStripeModal from "../components/modals/WalletDepositStripeModal.vue";
 
 export default {
   name: "WalletPage",
@@ -498,6 +499,20 @@ export default {
     sepaDepositButtonHandler(currency) {
       this.$modal.show(
         WalletDepositSepaFialModal,
+        {
+          currency,
+        },
+        {
+          adaptive: true,
+          height: "auto",
+          scrollable: true,
+          width: 500,
+        }
+      );
+    },
+    stripeDepositButtonHandler(currency) {
+      this.$modal.show(
+        WalletDepositStripeModal,
         {
           currency,
         },
