@@ -10,6 +10,7 @@ from core.views.inouts import FeesLimitsView
 from core.views.inouts import WithdrawalFeeView
 from core.views.inouts import LastCryptoWithdrawalAddressesList
 from core.views.inouts import TransactionsView
+from core.views.inouts import StripeWebhookView
 from core.api_urls.withdrawal import urlpatterns as withdrawal_url_patterns
 from core.views.withdrawal import WithdrawalRequestView
 
@@ -41,6 +42,7 @@ urlpatterns = [
     path(r'getcoinsstatus/', CoinsStatusView.as_view()),
     path(r'limits/', FeesLimitsView.as_view()),
     path(r'withdrawalfees/<currency>/', WithdrawalFeeView.as_view()),
+    path('stripe/webhook/', StripeWebhookView.as_view(), name='stripe_webhook'),
 ]
 
 urlpatterns.extend(router.urls)

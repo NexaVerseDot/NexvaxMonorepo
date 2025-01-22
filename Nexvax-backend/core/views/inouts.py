@@ -30,6 +30,7 @@ from core.serializers.inouts import LastCryptoWithdrawalAddressesSerializer, Top
 from core.serializers.inouts import TransactionSerizalizer
 from lib.filterbackend import FilterBackend
 from lib.utils import generate_random_string
+import stripe
 
 log = logging.getLogger(__name__)
 
@@ -466,12 +467,17 @@ class TopupRequestView(viewsets.ReadOnlyModelViewSet, viewsets.mixins.CreateMode
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.instance: PayGateTopup = self.perform_create(serializer)
-
-        response = Response({
-            'url': self.instance.topup_url,
-            'id': self.instance.id,
-        }, status=status.HTTP_201_CREATED)
-        return response
+        
+        if self.instance.sci_gate_id == GATE_STRIPE_ID:
+            stripe_session = stripe.checkout.Session.create(
+                **self.instance.get_gate().topup_params(self.instance)
+            )
+            return Response({
+                'url': stripe_session.url,
+                'id': self.instance.id,
+            }, status=status.HTTP_201_CREATED)
+        
+        return super().create(request, *args, **kwargs)
 
     def perform_create(self, serializer):
         self.instance = serializer.save()
@@ -638,3 +644,27 @@ def withdraw_amount(request):
         })
 
     return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+class StripeWebhookView(GenericAPIView):
+    permission_classes = (AllowAny,)
+    
+    def post(self, request):
+        payload = request.body
+        sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
+        
+        try:
+            event = stripe.Webhook.construct_event(
+                payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+            )
+            
+            if event.type == 'payment_intent.succeeded':
+                gate_id = GATE_STRIPE_ID
+                PayGateTopup.update_from_notification(gate_id, event)
+                
+            return Response(status=status.HTTP_200_OK)
+            
+        except ValueError as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        except stripe.error.SignatureVerificationError as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST)

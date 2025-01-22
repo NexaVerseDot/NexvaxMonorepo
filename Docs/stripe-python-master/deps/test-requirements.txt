@@ -1,0 +1,15 @@
+# packages needed to run unit tests (including extra supported http libraries)
+# version requirements: all supported versions (currently 3.6-3.12)
+
+# This is the last version of httpx compatible with Python 3.6
+httpx == 0.22.0; python_version == "3.6"
+httpx >= 0.24.1; python_version == "3.7"
+httpx >= 0.27.0; python_version >= "3.8"
+aiohttp == 3.8.6; python_version <= "3.7"
+aiohttp == 3.9.4; python_version > "3.7"
+anyio[trio] == 3.6.2
+
+pytest-mock >= 2.0.0
+mock >= 4.0; python_version < "3.8"
+pytest-xdist >= 1.31.0
+pytest >= 6.0.0

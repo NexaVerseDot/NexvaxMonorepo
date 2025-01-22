@@ -1,0 +1,127 @@
+Create Wallet:
+
+Request:
+
+import requests
+
+url = "https://api.paygate.to/control/wallet.php?address=0xF977814e90dA44bFA03b6295A0616a897441aceC&callback=https%3A%2F%2Fwww.example.com%2Forders.php%3Fnumber%3D827746841326"
+
+payload={}
+headers = {}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+Response:
+
+{
+  "address_in": "UVHer7X%2BDcGOY0NcDxtygO21%2BMThaZtav1xcLolKI%2BfjtFos30xqU8GzU%2FBseA6rUHLW7v3NPB5YsI04sl6TKg%3D%3D",
+  "polygon_address_in": "0x7152aA8F3eFC2f3b708D66781Df5A5DEf1FF4418",
+  "callback_url": "https://www.example.com/orders.php?number=827746841326",
+  "ipn_token": "aHR0cHM6Ly93d3cuZXhhbXBsZS5jb20vb3JkZXJzLnBocD9udW1iZXI9ODI3NzQ2ODQxMzI2"
+}
+
+=====================================================================
+
+Process Payment
+
+Request:
+
+import requests
+
+url = "https://checkout.paygate.to/process-payment.php?address=k1PrTuxSNpkdPZwdmCm4K3nMjAYo1sx17ea6uG0LunhFbr7SHBGQ8NBs3b5jkQw9RVoyWIbOyqzh7wtEipPbGg%3D%3D&amount=103.78&provider=moonpay&email=john%40example.com&currency=USD"
+
+payload={}
+headers = {}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+Response:
+
+No response body
+This request doesn't return any response body
+
+=====================================================================
+
+Affiliate Create Wallet (optional)
+
+
+Request:
+
+import requests
+
+url = "https://api.paygate.to/control/affiliate.php?address=0xF977814e90dA44bFA03b6295A0616a897441aceC&callback=https%3A%2F%2Fwww.example.com%2Forder%3Fnumber%3D82176413628089&affiliate=0x3c783c21a0383057D128bae431894a5C19F9Cf06"
+
+payload={}
+headers = {}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+
+
+{
+  "address_in": "b78ZwsLxw2YGf0ls1ZxjK7B3HXt1lW0hHeovZACYr3Qmm98sdSpmtxLhjmOnGNQzzOD62xdm6dp4EkbTqMGwoA%3D%3D",
+  "polygon_address_in": "0x800AE093FcEa69d0Eb03A0649f7ABeBf2Cf6585f",
+  "callback_url": "https://www.example.com/order?number=82176413628089",
+  "ipn_token": "aHR0cHM6Ly93d3cuZXhhbXBsZS5jb20vb3JkZXI%2FbnVtYmVyPTgyMTc2NDEzNjI4MDg5"
+}
+
+=====================================================================
+
+Convert to USD
+
+Request
+
+import requests
+
+url = "https://api.paygate.to/control/convert.php?from=EUR&value=1258.31"
+
+payload={}
+headers = {}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+Response:
+
+{
+  "status": "success",
+  "value_coin": "1351.76",
+  "exchange_rate": "1.07427"
+}
+
+=====================================================================
+
+Callback Event
+
+Request
+
+import requests
+
+url = "https://www.example.com/orders.php?number=827746841326&value_coin=105.6&coin=polygon_usdc&txid_in=0xa22a82b4aefbc55f6382e1b5c0b4f0e3c034a654df3bcac431f7fed1942e22bc&txid_out=0x94c2c3e84c2021e6bf377aebf8abf03b49570611bb0c336e357d7f4516f56244&address_in=0x32e854bD1270670C832634CA87858fFd9F3e2c78"
+
+payload={}
+headers = {}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+Response
+
+No response body
+This request doesn't return any response body
+
+
+

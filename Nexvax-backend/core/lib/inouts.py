@@ -9,6 +9,7 @@ from django.urls.base import reverse
 from lib.helpers import to_decimal
 from lib.utils import get_api_domain
 from lib.utils import get_domain
+from stripe import Stripe
 
 PENDING = 0
 COMPLETED = 1
@@ -82,3 +83,35 @@ class BasePayGate(object):
     @classmethod
     def topup_params(cls, obj):
         raise NotImplementedError
+
+
+class StripeGate(BasePayGate):
+    ID = 10  # Assign next available ID
+    NAME = 'stripe'
+    ALLOW_CURRENCY = ['USD', 'EUR', 'GBP']
+    
+    def __init__(self):
+        self.stripe = Stripe(settings.STRIPE_SECRET_KEY)
+        
+    @classmethod
+    def topup_params(cls, obj):
+        return {
+            'amount': int(obj.amount * 100),  # Stripe uses cents
+            'currency': obj.currency.code.lower(),
+            'payment_method_types': ['card'],
+            'metadata': {
+                'topup_id': cls.topup_id(obj)
+            },
+            'success_url': cls.success_url(obj),
+            'cancel_url': cls.fail_url(obj)
+        }
+        
+    @classmethod
+    def do_topup_update(cls, instance, state, data):
+        payment_intent = data.get('data', {}).get('object', {})
+        if payment_intent.get('status') == 'succeeded':
+            state = COMPLETED
+        elif payment_intent.get('status') == 'canceled':
+            state = CANCELLED
+            
+        super().do_topup_update(instance, state, data)
