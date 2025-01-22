@@ -63,8 +63,8 @@
 
 1. Prepare the directory structure:
    ```bash
-   git clone https://github.com/NexaVerseDot/NexvaxExchangeMonorepo.git
-   cd NexvaxExchangeMonorepo
+   git clone https://github.com/NexaVerseDot/NexvaxMonorepo.git
+   cd NexvaxMonorepo
    ```
 
 2. Ensure all required components are present:
